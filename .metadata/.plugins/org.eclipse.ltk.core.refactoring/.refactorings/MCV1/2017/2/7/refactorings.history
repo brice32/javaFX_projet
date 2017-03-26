@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;ViewPersonneListe.fxml&apos; to &apos;tuto-02-javafx-mvc/src/contacts.javafx&apos;&#x0D;&#x0A;- Original project: &apos;MCV1&apos;&#x0D;&#x0A;- Destination element: &apos;tuto-02-javafx-mvc/src/contacts.javafx&apos;&#x0D;&#x0A;- Original element: &apos;ViewPersonneListe.fxml&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="=tuto-02-javafx-mvc/src&lt;contacts.javafx" element1="src/application/ViewPersonneListe.fxml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1487198078301" units="0" version="1.0"/>
+</session>

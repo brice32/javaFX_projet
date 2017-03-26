@@ -1,0 +1,88 @@
+package contacts.javafx;
+
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import contacts.javafx.fxb.*;
+
+public class ModelPersonne {
+
+	private final ObservableList<FXPersonne> personnes = FXCollections.observableArrayList(p ->new Observable[]{ p.nomProperty(), p.prenomProperty()});
+
+	private final FXPersonne personneVue= new FXPersonne(99, "XXXXX", "Xxxxx");
+
+	private static FXPersonne personneCourant = new FXPersonne();
+
+	public ModelPersonne(){
+		actualiserListe();
+	}
+
+	public void actualiserListe(){
+		personnes.clear();
+
+		personnes.add(new FXPersonne(1,"DUBOIS","Jean"));
+		personnes.add(new FXPersonne(2,"DUPONT","Marie"));
+		personnes.add(new FXPersonne(3,"DURAND","Pierre"));
+	}
+
+	public ObservableList<FXPersonne> getPersonnes() {
+		// TODO Auto-generated method stub
+		return personnes;
+	}
+
+	public void supprimer(FXPersonne personne){
+		personnes.remove(personne);
+	}
+
+	public FXPersonne getPersonneVue(){
+		return personneVue;
+	}
+
+	// M¨¦thodes auxiliaires
+	private FXPersonne copierDonn¨¦es( FXPersonne source, FXPersonne cible ) {
+	cible.setId( source.getId() );
+	cible.setNom( source.getNom() );
+	cible.setPrenom( source.getPrenom() );
+	cible.getTelephones().clear();
+	for(FXTelephone personne : source.getTelephones()){
+		cible.getTelephones().add(personne);
+	}
+	return cible ;
+	}
+
+	public void preparerModifier( FXPersonne personne ){
+		if(personne!=null){
+		personneCourant=personne;
+		copierDonn¨¦es(personne, personneVue);
+		}
+		else{
+			personneCourant=new FXPersonne();
+			copierDonn¨¦es(personneCourant, personneVue);
+		}
+	}
+
+	public void preparerModifier(){
+		personneCourant=new FXPersonne();
+//		personnes.add(personneCourant);
+		copierDonn¨¦es(personneCourant, personneVue);
+	}
+
+	public void ValiderMiseAJour( ){
+		int dernierId;
+		copierDonn¨¦es(personneVue, personneCourant);
+		if(!personnes.contains(personneCourant)){
+			dernierId=personnes.get(personnes.size()-1).getId();
+			personneCourant.setId(dernierId+1);
+			personnes.add(personneCourant);
+		}
+	}
+
+	public void ajouterTelephone(){
+		personneVue.getTelephones().add(new FXTelephone());
+	}
+
+	public void supprimerTelephone( FXTelephone telephone ){
+		personneVue.getTelephones().remove(telephone);
+	}
+}

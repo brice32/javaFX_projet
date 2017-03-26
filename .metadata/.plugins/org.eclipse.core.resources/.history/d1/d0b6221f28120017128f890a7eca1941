@@ -1,0 +1,48 @@
+package contacts.javafx.view.systeme;
+
+import contacts.commun.util.ExceptionAppli;
+import contacts.javafx.fxb.FXCompte;
+import contacts.javafx.model.IModelConnexion;
+import contacts.javafx.model.IModelInfo;
+import contacts.javafx.view.IController;
+import contacts.javafx.view.IManagerGui;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+
+public class ControllerInfo implements IController {
+
+	private IModelConnexion	modelConnexion;
+
+	// Composants de la vue
+
+	@FXML
+	private Label		labelTitre;
+	@FXML
+	private Label		labelMessage;
+	@FXML
+	private Label       labelNom;
+	@FXML
+	private Label       labelPrenom;
+
+	// Injecteurs
+
+	@Override
+	public void setManagerGui( IManagerGui managerGui ) throws ExceptionAppli {
+
+		// Injection  de dépendances
+		IModelInfo modelInfo = managerGui.getModel( IModelInfo.class );
+
+		// Data binding
+		labelTitre.textProperty().bind( modelInfo.titreProperty() );
+		labelMessage.textProperty().bind( modelInfo.messageProperty() );
+		modelConnexion = managerGui.getModel( IModelConnexion.class );
+		FXCompte compteConnecte = modelConnexion.getCompteConnecte();
+//		labelNom.textProperty().bind( compteConnecte.nomProperty());
+//		labelPrenom.textProperty().bind( compteConnecte.prenomProperty());
+		System.out.println(compteConnecte.getNom());
+		System.out.println(compteConnecte.getPrenom());
+	}
+
+}
