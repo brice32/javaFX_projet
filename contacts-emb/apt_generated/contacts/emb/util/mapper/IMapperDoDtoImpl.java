@@ -12,7 +12,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-03-26T15:31:25+0200",
+    date = "2017-03-27T02:37:08+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDoDtoImpl implements IMapperDoDto {
@@ -25,17 +25,17 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Compte compte = new Compte();
 
-        compte.setEmail( source.getEmail() );
         compte.setId( source.getId() );
-        compte.setMotDePasse( source.getMotDePasse() );
-        compte.setNom( source.getNom() );
-        compte.setPrenom( source.getPrenom() );
         compte.setPseudo( source.getPseudo() );
+        compte.setMotDePasse( source.getMotDePasse() );
+        compte.setEmail( source.getEmail() );
         List<String> list = source.getRoles();
         if ( list != null ) {
             compte.setRoles(       new ArrayList<String>( list )
             );
         }
+        compte.setNom( source.getNom() );
+        compte.setPrenom( source.getPrenom() );
         compte.setTelephone( source.getTelephone() );
 
         return compte;

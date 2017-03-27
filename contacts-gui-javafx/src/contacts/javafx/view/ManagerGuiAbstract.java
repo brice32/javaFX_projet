@@ -74,8 +74,8 @@ public abstract class ManagerGuiAbstract implements IManagerGui  {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setScene(scene);
 			stage.sizeToScene();
-//			stage.setMinHeight(300);
-//			stage.setMinWidth(400);
+			stage.setMinHeight(600);
+			stage.setMinWidth(800);
 			stage.setTitle("Gestion de contacts");
 			stage.getIcons().add(new Image(getClass().getResource("icone.png").toExternalForm()));
 			this.stage = stage;

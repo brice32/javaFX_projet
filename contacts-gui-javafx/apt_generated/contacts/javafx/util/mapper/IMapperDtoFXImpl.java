@@ -14,7 +14,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-03-26T15:27:53+0200",
+    date = "2017-03-27T02:37:13+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDtoFXImpl implements IMapperDtoFX {
@@ -27,12 +27,12 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        target.setEmail( source.getEmail() );
         target.setId( source.getId() );
+        target.setPseudo( source.getPseudo() );
         target.setMotDePasse( source.getMotDePasse() );
+        target.setEmail( source.getEmail() );
         target.setNom( source.getNom() );
         target.setPrenom( source.getPrenom() );
-        target.setPseudo( source.getPseudo() );
         target.setTelephone( source.getTelephone() );
         if ( target.getRoles() != null ) {
             target.getRoles().clear();
@@ -53,12 +53,12 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXCompte fXCompte = new FXCompte();
 
-        fXCompte.setEmail( source.getEmail() );
         fXCompte.setId( source.getId() );
+        fXCompte.setPseudo( source.getPseudo() );
         fXCompte.setMotDePasse( source.getMotDePasse() );
+        fXCompte.setEmail( source.getEmail() );
         fXCompte.setNom( source.getNom() );
         fXCompte.setPrenom( source.getPrenom() );
-        fXCompte.setPseudo( source.getPseudo() );
         fXCompte.setTelephone( source.getTelephone() );
         if ( fXCompte.getRoles() != null ) {
             ObservableList<String> observableList = stringListToStringObservableList( source.getRoles() );
@@ -142,9 +142,9 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXTelephone fXTelephone_ = new FXTelephone();
 
-        fXTelephone_.setId( source.getId() );
         fXTelephone_.setLibelle( source.getLibelle() );
         fXTelephone_.setNumero( source.getNumero() );
+        fXTelephone_.setId( source.getId() );
 
         return fXTelephone_;
     }
@@ -192,9 +192,9 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXTelephone fXTelephone = new FXTelephone();
 
-        fXTelephone.setId( source.getId() );
         fXTelephone.setLibelle( source.getLibelle() );
         fXTelephone.setNumero( source.getNumero() );
+        fXTelephone.setId( source.getId() );
 
         return fXTelephone;
     }
