@@ -36,6 +36,9 @@ public class Compte  {
 		this.pseudo = pseudo;
 		this.motDePasse = motDePasse;
 		this.email = email;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.telephone = telephone;
 	}
 
 

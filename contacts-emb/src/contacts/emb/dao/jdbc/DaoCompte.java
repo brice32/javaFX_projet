@@ -49,11 +49,14 @@ public class DaoCompte implements IDaoCompte {
 			cn = dataSource.getConnection();
 
 			// Insère le compte
-			sql = "INSERT INTO compte ( Pseudo, MotDePasse, Email ) VALUES ( ?, ?, ? )";
+			sql = "INSERT INTO Compte ( pseudo, motDePasse, email, nom, prenom, telephone ) VALUES ( ?, ?, ?, ?, ?, ? )";
 			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
 			stmt.setString(	1, compte.getPseudo() );
 			stmt.setString(	2, compte.getMotDePasse() );
 			stmt.setString(	3, compte.getEmail() );
+			stmt.setString(	4, compte.getNom() );
+			stmt.setString(	5, compte.getPrenom() );
+			stmt.setString(	6, compte.getTelephone() );
 			stmt.executeUpdate();
 
 			// Récupère l'identifiant généré par le SGBD
@@ -88,12 +91,15 @@ public class DaoCompte implements IDaoCompte {
 			cn = dataSource.getConnection();
 
 			// Modifie le compte
-			sql = "UPDATE compte SET Pseudo = ?, MotDePasse = ?, Email = ? WHERE IdCompte =  ?";
+			sql = "UPDATE Compte SET Pseudo = ?, motDePasse = ?, email = ? , nom = ?, prenom = ?, telephone = ? WHERE idCompte =  ?";
 			stmt = cn.prepareStatement( sql );
 			stmt.setString(	1, compte.getPseudo() );
 			stmt.setString(	2, compte.getMotDePasse() );
 			stmt.setString(	3, compte.getEmail() );
-			stmt.setInt(	4, compte.getId() );
+			stmt.setString(	4, compte.getNom() );
+			stmt.setString(	5, compte.getPrenom() );
+			stmt.setString(	6, compte.getTelephone() );
+			stmt.setInt(	7, compte.getId() );
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {
@@ -122,7 +128,7 @@ public class DaoCompte implements IDaoCompte {
 			cn = dataSource.getConnection();
 
 			// Supprime le compte
-			sql = "DELETE FROM compte WHERE IdCompte = ? ";
+			sql = "DELETE FROM Compte WHERE idCompte = ? ";
 			stmt = cn.prepareStatement(sql);
 			stmt.setInt( 1, idCompte );
 			stmt.executeUpdate();
@@ -147,7 +153,7 @@ public class DaoCompte implements IDaoCompte {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM compte WHERE IdCompte = ?";
+			sql = "SELECT * FROM Compte WHERE idCompte = ?";
             stmt = cn.prepareStatement(sql);
             stmt.setInt(1, idCompte);
             rs = stmt.executeQuery();
@@ -242,7 +248,7 @@ public class DaoCompte implements IDaoCompte {
 			cn = dataSource.getConnection();
 
 			sql = "SELECT COUNT(*) AS nbComptes"
-				+ " FROM compte WHERE pseudo = ? AND IdCompte <> ?";
+				+ " FROM Compte WHERE pseudo = ? AND idCompte <> ?";
 			stmt = cn.prepareStatement(sql);
 			stmt.setString(	1, pseudo );
 			stmt.setInt(	2, idCompte );

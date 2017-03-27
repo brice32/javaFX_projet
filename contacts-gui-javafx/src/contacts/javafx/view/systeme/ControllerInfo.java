@@ -12,6 +12,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
@@ -36,12 +37,16 @@ public class ControllerInfo implements IController {
     private Label       labelModerateur;
     @FXML
     private Label       labelSecretaire;
-
+    @FXML
+    private Button		buttonGestionUtilisateur;
 
 	// Injecteurs
 
 	@Override
 	public void setManagerGui( IManagerGui managerGui ) throws ExceptionAppli {
+
+		//initialiser etat disable des buttons
+		buttonGestionUtilisateur.setDisable(true);
 
 		// Injection  de dÃ©pendances
 		IModelInfo modelInfo = managerGui.getModel( IModelInfo.class );
@@ -56,6 +61,7 @@ public class ControllerInfo implements IController {
 
 		if(compteConnecte.isInRole(Roles.ADMINISTRATEUR)){
 			labelAdministrateur.setTextFill(Color.BLACK);
+			buttonGestionUtilisateur.setDisable(false);
 		}
 		if(compteConnecte.isInRole("Modérateur")){
 			labelModerateur.setTextFill(Color.BLACK);

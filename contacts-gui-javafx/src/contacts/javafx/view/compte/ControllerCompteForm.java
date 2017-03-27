@@ -25,9 +25,9 @@ import javafx.scene.control.cell.CheckBoxListCell;
 
 public class ControllerCompteForm implements IController {
 
-	
+
 	// Composants de la vue
-	
+
 	@FXML
 	private TextField			textFieldId;
 	@FXML
@@ -35,28 +35,34 @@ public class ControllerCompteForm implements IController {
 	@FXML
 	private TextField			textFieldMotDePasse;
 	@FXML
+	private TextField           textFieldNom;
+	@FXML
+	private TextField           textFieldPrenom;
+	@FXML
 	private TextField			textFieldEmail;
+	@FXML
+	private TextField           textFieldTelephone;
 	@FXML
 	private ListView<ItemRole>	listViewGroupes;
 
-	
+
 	// Autres champs
-	
+
 	private IManagerGui			managerGui;
 	private IModelCompte		modelCompte;
 	private FXCompte 			compteVue;
-	
+
 	private final ObservableList<ItemRole> itemGroupes = FXCollections.observableArrayList();
-	
-	
-	
+
+
+
 	// Actions
-	
+
 	@FXML
 	private void doAnnuler() {
 		managerGui.showView( EnumView.CompteListe );;
 	}
-	
+
 	@FXML
 	private void doValider()  {
 		try {
@@ -66,11 +72,11 @@ public class ControllerCompteForm implements IController {
 			managerGui.afficherErreur(e);
 		}
 	}
-	
+
 
 
 	// Initialisation du Controller
-	
+
     @Override
 	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
 
@@ -83,9 +89,12 @@ public class ControllerCompteForm implements IController {
 		textFieldId.textProperty().bind(new StringBindingId(compteVue.idProperty()));
 		textFieldPseudo.textProperty().bindBidirectional( compteVue.pseudoProperty() );
 		textFieldMotDePasse.textProperty().bindBidirectional( compteVue.motDePasseProperty() );
+		textFieldNom.textProperty().bindBidirectional( compteVue.nomProperty() );
+		textFieldPrenom.textProperty().bindBidirectional( compteVue.prenomProperty() );
 		textFieldEmail.textProperty().bindBidirectional( compteVue.emailProperty() );
+		textFieldTelephone.textProperty().bindBidirectional( compteVue.telephoneProperty() );
 
-		
+
 		// Configuration de l'objet ListView
 
 		// Data binding
@@ -94,10 +103,10 @@ public class ControllerCompteForm implements IController {
     	for ( String role : Roles.getIds()  ) {
     		itemRoleAjouter( role, false);
     	}
-		actualiserListeItemGroupes();    			
+		actualiserListeItemGroupes();
 
         listViewGroupes.setItems( itemGroupes );
-    	
+
     	// De compteVue vers la liste
     	compteVue.getRoles().addListener(
         	(ListChangeListener<String>)	c -> {
@@ -109,19 +118,19 @@ public class ControllerCompteForm implements IController {
 					itemRoleChoisir(role, false );
 				}
         });
-    	
-		
+
+
 		// Affichage
         listViewGroupes.setCellFactory( CheckBoxListCell.forListView(
         		(ItemRole item) -> item.choisiProperty()
    		) );
-        
+
 	}
 
-    
-    
+
+
     // Méthodes auxiliaires
-    
+
     private void actualiserListeItemGroupes() {
     	Collections.sort( itemGroupes,
     			(Comparator<ItemRole>) (i1, i2) -> {
@@ -131,9 +140,9 @@ public class ControllerCompteForm implements IController {
 			item.setChoisi( compteVue.isInRole( item.getRole() ) );
 		}
     }
-	
-    
-    
+
+
+
     private ItemRole itemRoleRetrouver( String role ) {
     	if ( role != null ) {
     		for ( ItemRole item : itemGroupes ) {
@@ -151,58 +160,58 @@ public class ControllerCompteForm implements IController {
 			itemGroupes.add( new ItemRole(role, choisi) );
 		}
     }
-    
+
 //    private void itemRoleSupprimer( EnumRole role ) {
 //		ItemRole item = itemRoleRetrouver(role);
 //		if ( item != null ) {
 //			itemGroupes.remove(item);
 //		}
 //    }
-    
+
     private void itemRoleChoisir( String role, boolean choisi ) {
 		ItemRole item = itemRoleRetrouver(role);
 		if ( item != null ) {
 			item.setChoisi(choisi);;
 		}
     }
-	
-	
+
+
 	// Classe auxiliaire
 
 	private class ItemRole {
 
 		// Champs
-		
+
 		private final String			role;
 		private final BooleanProperty	choisi;
 
-		
+
 		// Propriétés
 
 		public String getRole() {
 			return role;
 		}
-		
+
 		public void setChoisi( boolean choisi ) {
 			choisiProperty().set(choisi);
 		}
-		
+
 		public BooleanProperty choisiProperty() {
 			return choisi;
 		}
-		
+
 		@Override
 		public String toString() {
 			return Roles.getLibelle( role );
 		}
-		
+
 
 		// Constructeurs
 
 		public ItemRole( String role, boolean present ) {
 			this.role = role;
 			this.choisi = new SimpleBooleanProperty( present );
-        	// Binding de l'item vers compteVue 
+        	// Binding de l'item vers compteVue
     		choisi.addListener(
     			(ChangeListener<Boolean> ) ( obs, oldValue, newValue ) -> {
     				if ( newValue ) {
@@ -214,6 +223,6 @@ public class ControllerCompteForm implements IController {
     				}
         		});
 		}
-		
+
 	}
 }

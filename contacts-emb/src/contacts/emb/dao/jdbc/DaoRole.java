@@ -1,5 +1,6 @@
 package contacts.emb.dao.jdbc;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import contacts.commun.util.Roles;
 import contacts.emb.dao.IDaoRole;
 import contacts.emb.dom.Compte;
 
@@ -39,15 +41,29 @@ public class DaoRole implements IDaoRole {
 
 		try {
 			cn = dataSource.getConnection();
-			sql = "INSERT INTO role (IdCompte, Role) VALUES (?,?)";
+			sql = "INSERT INTO posseder (idCompte, idRole) VALUES (?,?)";
 			stmt = cn.prepareStatement( sql );
 			for( String role : compte.getRoles() ) {
 				stmt.setInt(	1, compte.getId() );
-				stmt.setString(	2, role );
+
+				 if(role.equals(Roles.ADMINISTRATEUR)){
+					 stmt.setInt(	2,  1);
+				 }else if(role.equals(Roles.MODERATEUR)){
+					 stmt.setInt(	2,  2);
+				 }else if(role.equals(Roles.SECRETAIRE)){
+					 stmt.setInt(	2,  3);
+				 }else{
+					 throw new IOException("DaoRole.java insererPourCompte role erreu");
+				 }
+
+
 				stmt.executeUpdate();
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			try { if (rs != null) rs.close();} catch (SQLException e) {}
 			try { if (stmt != null) stmt.close();} catch (SQLException e) {}
@@ -67,20 +83,31 @@ public class DaoRole implements IDaoRole {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "DELETE FROM role WHERE IdCompte = ?";
+			sql = "DELETE FROM posseder WHERE idCompte = ?";
 			stmtDelete = cn.prepareStatement( sql );
 			stmtDelete.setInt(	1, compte.getId() );
 			stmtDelete.executeUpdate();
 
-			sql = "INSERT INTO role (IdCompte, Role) VALUES (?,?)";
+			sql = "INSERT INTO posseder (idCompte, idRole) VALUES (?,?)";
 			stmtInsert = cn.prepareStatement( sql );
 			for( String role : compte.getRoles() ) {
 				stmtInsert.setInt(	1, compte.getId() );
-				stmtInsert.setString(	2, role );
+				 if(role.equals(Roles.ADMINISTRATEUR)){
+					 stmtInsert.setInt(	2,  1);
+				 }else if(role.equals(Roles.MODERATEUR)){
+					 stmtInsert.setInt(	2,  2);
+				 }else if(role.equals(Roles.SECRETAIRE)){
+					 stmtInsert.setInt(	2,  3);
+				 }else{
+					 throw new IOException("DaoRole.java modifierPourCompte role erreu");
+				 }
 				stmtInsert.executeUpdate();
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			try { if (stmtDelete != null) stmtDelete.close();} catch (SQLException e) {}
 			try { if (stmtInsert != null) stmtInsert.close();} catch (SQLException e) {}
@@ -100,7 +127,7 @@ public class DaoRole implements IDaoRole {
 			cn = dataSource.getConnection();
 
 			// Supprime les rôles
-			sql = "DELETE FROM role  WHERE IdCompte = ? ";
+			sql = "DELETE FROM posseder  WHERE idCompte = ? ";
 			stmt = cn.prepareStatement(sql);
 			stmt.setInt( 1, idCompte );
 			stmt.executeUpdate();
