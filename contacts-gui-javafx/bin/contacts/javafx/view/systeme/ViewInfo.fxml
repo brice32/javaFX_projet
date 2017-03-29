@@ -55,12 +55,12 @@
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Gestion Annonce" />
-                              <Button contentDisplay="CENTER" layoutX="32.0" layoutY="420.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Button" GridPane.rowIndex="2" />
-                              <Button contentDisplay="CENTER" layoutX="291.0" layoutY="420.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Gestion Utilisateur" GridPane.columnIndex="1" />
-                              <Button fx:id="buttonGestionUtilisateur" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="32.0" layoutY="249.0" mnemonicParsing="false" onAction="#doGestionUtilisateur" prefHeight="100.0" prefWidth="200.0" text="Gestion Utilisateur" GridPane.rowIndex="1" />
-                              <Button contentDisplay="CENTER" layoutX="291.0" layoutY="249.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Gestion Des Annonce" />
+                              <Button contentDisplay="CENTER" layoutX="32.0" layoutY="420.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Gestion Des Tarifs" GridPane.rowIndex="2" />
+                              <Button contentDisplay="CENTER" layoutX="291.0" layoutY="420.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Mouvement Financier" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Configuration" GridPane.columnIndex="1" />
+                              <Button fx:id="buttonGestionUtilisateur" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="32.0" layoutY="249.0" mnemonicParsing="false" onAction="#doGestionUtilisateur" prefHeight="100.0" prefWidth="200.0" text="Gestion Des Utilisateur" GridPane.rowIndex="1" />
+                              <Button contentDisplay="CENTER" layoutX="291.0" layoutY="249.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Magazine" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>

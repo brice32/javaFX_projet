@@ -14,6 +14,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Système">
             <items>
+                  <MenuItem fx:id="menuItemMenu" disable="true" mnemonicParsing="false" onAction="#doMenu" text="Menu" />
                   <MenuItem fx:id="menuItemSeDeconnecter" disable="true" mnemonicParsing="false" onAction="#doSeDeconnecter" text="Se déconnecter" />
               <MenuItem id="menuItemQuitter" mnemonicParsing="false" onAction="#doQuitter" text="Quitter" />
             </items>

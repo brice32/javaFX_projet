@@ -19,9 +19,15 @@
                   <TextField fx:id="textFieldPseudo" layoutX="89.0" layoutY="45.0" prefHeight="25.0" prefWidth="117.0" />
                   <Label layoutY="83.0" text="Mot de passe :" />
                   <TextField fx:id="textFieldMotDePasse" layoutX="89.0" layoutY="77.0" prefHeight="25.0" prefWidth="117.0" />
+                  <Label layoutY="117.0" text="Nom:" />
+                  <TextField fx:id="textFieldNom" layoutX="89.0" layoutY="111.0" prefHeight="25.0" prefWidth="117.0" />
+                  <Label layoutY="150.0" text="Prenom:" />
+                  <TextField fx:id="textFieldPrenom" layoutX="89.0" layoutY="144.0" prefHeight="25.0" prefWidth="117.0" />
                   <Label layoutY="189.0" text="e-mail :" />
                   <TextField fx:id="textFieldEmail" layoutX="89.0" layoutY="183.0" prefHeight="25.0" prefWidth="200.0" />
-                  <Label layoutY="255.0" text="Groupes :" />
+                  <Label layoutY="222.0" text="Telephone :" />
+                  <TextField fx:id="textFieldTelephone" layoutX="89.0" layoutY="216.0" prefHeight="25.0" prefWidth="200.0" />
+                  <Label layoutY="255.0" text="Roles :" />
                   <ListView fx:id="listViewGroupes" layoutX="89.0" layoutY="246.0" prefHeight="91.0" prefWidth="149.0" />
                   <HBox alignment="CENTER" layoutX="49.0" layoutY="355.0" prefHeight="60.0" prefWidth="200.0" spacing="10.0">
                      <children>
@@ -29,12 +35,6 @@
                         <Button cancelButton="true" mnemonicParsing="false" onAction="#doAnnuler" text="Annuler" />
                      </children>
                   </HBox>
-                  <TextField fx:id="textFieldNom" layoutX="89.0" layoutY="111.0" prefHeight="25.0" prefWidth="117.0" />
-                  <Label layoutY="117.0" text="Nom:" />
-                  <Label layoutY="150.0" text="Prenom:" />
-                  <TextField fx:id="textFieldPrenom" layoutX="89.0" layoutY="144.0" prefHeight="25.0" prefWidth="117.0" />
-                  <TextField fx:id="textFieldTelephone" layoutX="89.0" layoutY="216.0" prefHeight="25.0" prefWidth="200.0" />
-                  <Label layoutY="222.0" text="Telephone :" />
                </children>
             </Pane>
          </children>

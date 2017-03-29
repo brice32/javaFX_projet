@@ -22,7 +22,8 @@ public class ControllerPrincipal implements IController  {
 	private Menu 		menuDonnees;
 	@FXML
 	private MenuItem	menuItemComptes;
-
+    @FXML
+    private MenuItem    menuItemMenu;
 
 	// Autres champs
 
@@ -60,6 +61,10 @@ public class ControllerPrincipal implements IController  {
 		managerGui.showView( EnumView.PersonneListe );
 	}
 
+	@FXML
+	public void doMenu(){
+		managerGui.showView( EnumView.Info );
+	}
 	// Initialisation du Controller
 
     @Override
@@ -86,12 +91,14 @@ public class ControllerPrincipal implements IController  {
 	private void configurerMenu() {
 
 		menuItemSeDeconnecter.setDisable(true);
+		menuItemMenu.setDisable(true);
 
 		menuDonnees.setVisible(false);
 		menuItemComptes.setVisible(false);
 
 		if( modelConnexion.getCompteConnecte() != null ) {
 			menuItemSeDeconnecter.setDisable(false);
+			menuItemMenu.setDisable(false);
 			if( modelConnexion.getCompteConnecte().isInRole( Roles.MODERATEUR) ) {
 				menuDonnees.setVisible(true);
 			}
