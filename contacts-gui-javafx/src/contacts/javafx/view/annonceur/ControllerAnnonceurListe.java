@@ -54,16 +54,17 @@ public class ControllerAnnonceurListe implements IController {
 	@FXML
 	private Label 	LabelSiteWeb;
 
-//	@FXML
-//	private Button Modifier;
-//
-//	@FXML
-//	private Button Supprimer;
+	@FXML
+	private Button buttonModifier;
+
+	@FXML
+	private Button buttonSupprimer;
 
 	private IManagerGui managerGui;
 
 	private IModelAnnonceur modelAnnonceur;
 
+	@FXML
 	private void doActualiser() {
 		try {
 			modelAnnonceur.actualiserListe();
@@ -108,6 +109,8 @@ public class ControllerAnnonceurListe implements IController {
 				LabelLieuCp.setText(annonceur.getLieuCp());
 				LabelLieuVille.setText(annonceur.getLieuVille());
 				LabelSiteWeb.setText(annonceur.getSiteWeb());
+				buttonModifier.setDisable(false);
+				buttonSupprimer.setDisable(false);
 			}
 			else{
 				LabelIdAnnonceur.setText("");
@@ -119,6 +122,8 @@ public class ControllerAnnonceurListe implements IController {
 				LabelLieuCp.setText("");
 				LabelLieuVille.setText("");
 				LabelSiteWeb.setText("");
+				buttonModifier.setDisable(true);
+				buttonSupprimer.setDisable(true);
 			}
 		});
 		}
