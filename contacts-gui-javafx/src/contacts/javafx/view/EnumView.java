@@ -10,6 +10,7 @@ public enum EnumView {
 
 	Info			( "systeme/ViewInfo.fxml" ),
 	Connexion		( "systeme/ViewConnexion.fxml" ),
+	MenuAnnonce     ( "systeme/ViewMenuAnnonce.fxml"),
 	CompteListe		( "compte/ViewCompteListe.fxml" ),
 	CompteForm		( "compte/ViewCompteForm.fxml" ),
 	PersonneListe   ( "personne/ViewPersonneListe.fxml" ),

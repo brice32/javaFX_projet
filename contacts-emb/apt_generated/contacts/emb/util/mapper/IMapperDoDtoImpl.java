@@ -1,8 +1,10 @@
 package contacts.emb.util.mapper;
 
+import contacts.commun.dto.DtoAnnonceur;
 import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoTelephone;
+import contacts.emb.dom.Annonceur;
 import contacts.emb.dom.Compte;
 import contacts.emb.dom.Personne;
 import contacts.emb.dom.Telephone;
@@ -12,7 +14,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-03-28T14:28:12+0200",
+    date = "2017-03-31T12:20:35+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDoDtoImpl implements IMapperDoDto {
@@ -25,17 +27,17 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Compte compte = new Compte();
 
-        compte.setId( source.getId() );
-        compte.setPseudo( source.getPseudo() );
-        compte.setMotDePasse( source.getMotDePasse() );
         compte.setEmail( source.getEmail() );
+        compte.setId( source.getId() );
+        compte.setMotDePasse( source.getMotDePasse() );
+        compte.setNom( source.getNom() );
+        compte.setPrenom( source.getPrenom() );
+        compte.setPseudo( source.getPseudo() );
         List<String> list = source.getRoles();
         if ( list != null ) {
             compte.setRoles(       new ArrayList<String>( list )
             );
         }
-        compte.setNom( source.getNom() );
-        compte.setPrenom( source.getPrenom() );
         compte.setTelephone( source.getTelephone() );
 
         return compte;
@@ -103,6 +105,48 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
         }
 
         return dtoPersonne;
+    }
+
+    @Override
+    public Annonceur map(DtoAnnonceur source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Annonceur annonceur = new Annonceur();
+
+        annonceur.setId( source.getId() );
+        annonceur.setNom( source.getNom() );
+        annonceur.setTelephone( source.getTelephone() );
+        annonceur.setEmail( source.getEmail() );
+        annonceur.setLieuNom( source.getLieuNom() );
+        annonceur.setLieuAdresse( source.getLieuAdresse() );
+        annonceur.setLieuCp( source.getLieuCp() );
+        annonceur.setLieuVille( source.getLieuVille() );
+        annonceur.setSiteWeb( source.getSiteWeb() );
+
+        return annonceur;
+    }
+
+    @Override
+    public DtoAnnonceur map(Annonceur source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoAnnonceur dtoAnnonceur = new DtoAnnonceur();
+
+        dtoAnnonceur.setEmail( source.getEmail() );
+        dtoAnnonceur.setId( source.getId() );
+        dtoAnnonceur.setLieuAdresse( source.getLieuAdresse() );
+        dtoAnnonceur.setLieuCp( source.getLieuCp() );
+        dtoAnnonceur.setLieuNom( source.getLieuNom() );
+        dtoAnnonceur.setLieuVille( source.getLieuVille() );
+        dtoAnnonceur.setNom( source.getNom() );
+        dtoAnnonceur.setSiteWeb( source.getSiteWeb() );
+        dtoAnnonceur.setTelephone( source.getTelephone() );
+
+        return dtoAnnonceur;
     }
 
     @Override

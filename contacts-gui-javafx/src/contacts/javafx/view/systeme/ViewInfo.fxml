@@ -55,7 +55,7 @@
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Gestion Des Annonce" />
+                              <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" onAction="#doGestionAnnonce" prefHeight="100.0" prefWidth="200.0" text="Gestion Des Annonce" />
                               <Button contentDisplay="CENTER" layoutX="32.0" layoutY="420.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Gestion Des Tarifs" GridPane.rowIndex="2" />
                               <Button contentDisplay="CENTER" layoutX="291.0" layoutY="420.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Mouvement Financier" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Button alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Configuration" GridPane.columnIndex="1" />

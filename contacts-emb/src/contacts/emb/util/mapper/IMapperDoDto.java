@@ -6,9 +6,11 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
+import contacts.commun.dto.DtoAnnonceur;
 import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoTelephone;
+import contacts.emb.dom.Annonceur;
 import contacts.emb.dom.Compte;
 import contacts.emb.dom.Personne;
 import contacts.emb.dom.Telephone;
@@ -29,6 +31,10 @@ public interface IMapperDoDto {
 	Personne map(DtoPersonne source );
 
 	DtoPersonne map( Personne source );
+
+	Annonceur map( DtoAnnonceur source );
+
+	DtoAnnonceur map( Annonceur source );
 
 	@Mapping( target="personne", ignore=true )
 	Telephone map( DtoTelephone source );

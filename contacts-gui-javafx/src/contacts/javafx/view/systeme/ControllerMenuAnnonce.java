@@ -4,19 +4,16 @@ import contacts.commun.util.ExceptionAppli;
 import contacts.commun.util.Roles;
 import contacts.javafx.fxb.FXCompte;
 import contacts.javafx.model.IModelConnexion;
-import contacts.javafx.model.IModelInfo;
 import contacts.javafx.view.EnumView;
 import contacts.javafx.view.IController;
 import contacts.javafx.view.IManagerGui;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
-public class ControllerInfo implements IController {
+public class ControllerMenuAnnonce implements IController {
 
 	private IModelConnexion	modelConnexion;
 
@@ -38,23 +35,21 @@ public class ControllerInfo implements IController {
     @FXML
     private Label       labelSecretaire;
     @FXML
-    private Button		buttonGestionUtilisateur;
+    private Button      buttonListeAnnonce;
     @FXML
-    private Button      buttonGestionAnnonce;
-	// Injecteurs
+    private Button      buttonListeAnnonceur;
 
 	@Override
-	public void setManagerGui( IManagerGui managerGui ) throws ExceptionAppli {
-
-		//initialiser etat disable des buttons
-		buttonGestionUtilisateur.setDisable(true);
-
-		// Injection  de dÃ©pendances
-		IModelInfo modelInfo = managerGui.getModel( IModelInfo.class );
+	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
+		// TODO Auto-generated method stub
 		this.managerGui = managerGui;
-		// Data binding
-		labelTitre.textProperty().bind( modelInfo.titreProperty() );
-		labelMessage.textProperty().bind( modelInfo.messageProperty() );
+
+		labelTitre.textProperty().bind( new SimpleStringProperty("Menu De Anonnce") );
+		labelMessage.textProperty().bind( new SimpleStringProperty("Choisissez Une Selection") );
+
+		buttonListeAnnonce.setDisable(true);
+		buttonListeAnnonceur.setDisable(true);
+
 		modelConnexion = managerGui.getModel( IModelConnexion.class );
 		FXCompte compteConnecte = modelConnexion.getCompteConnecte();
 		labelNom.textProperty().bind( new SimpleStringProperty(compteConnecte.getNom()));
@@ -62,24 +57,19 @@ public class ControllerInfo implements IController {
 
 		if(compteConnecte.isInRole(Roles.ADMINISTRATEUR)){
 			labelAdministrateur.setTextFill(Color.BLACK);
-			buttonGestionUtilisateur.setDisable(false);
 		}
 		if(compteConnecte.isInRole("Modérateur")){
 			labelModerateur.setTextFill(Color.BLACK);
 		}
 		if(compteConnecte.isInRole("Secrétaire")){
 			labelSecretaire.setTextFill(Color.BLACK);
+			buttonListeAnnonce.setDisable(false);
+			buttonListeAnnonceur.setDisable(false);
 		}
 	}
 
 	@FXML
-	private void doGestionUtilisateur() {
-		managerGui.showView(EnumView.CompteListe);
+	private void doListAnnonceur(){
+		;
 	}
-
-	@FXML
-	private void doGestionAnnonce(){
-		managerGui.showView(EnumView.MenuAnnonce);
-	}
-
 }

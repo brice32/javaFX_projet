@@ -4,9 +4,11 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
+import contacts.commun.dto.DtoAnnonceur;
 import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoTelephone;
+import contacts.javafx.fxb.FXAnnonceur;
 import contacts.javafx.fxb.FXCompte;
 import contacts.javafx.fxb.FXPersonne;
 import contacts.javafx.fxb.FXTelephone;
@@ -35,6 +37,12 @@ public interface IMapperDtoFX {
 	FXTelephone map( DtoTelephone source );
 
 	DtoTelephone map( FXTelephone source);
+
+	FXAnnonceur map( DtoAnnonceur source );
+
+	DtoAnnonceur map( FXAnnonceur source );
+
+	FXAnnonceur update( FXAnnonceur source, @MappingTarget FXAnnonceur cible);
 
 	FXPersonne update( FXPersonne source, @MappingTarget FXPersonne cible );
 
