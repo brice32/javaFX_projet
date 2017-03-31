@@ -2,6 +2,7 @@ package contacts.javafx.model.standard;
 
 import contacts.commun.dto.DtoAnnonceur;
 import contacts.commun.service.IServiceAnnonceur;
+import contacts.commun.service.IServiceCompte;
 import contacts.commun.util.ExceptionAppli;
 import contacts.javafx.fxb.FXAnnonceur;
 import contacts.javafx.model.IModelAnnonceur;
@@ -13,8 +14,8 @@ import javafx.collections.ObservableList;
 
 public class ModelAnnonceur implements IModelAnnonceur {
 
-	private final ObservableList<FXAnnonceur> annonceurs = FXCollections.observableArrayList(a ->new Observable[]{ a.nomProperty(), a.emailProperty()});
-
+	private final ObservableList<FXAnnonceur> annonceurs = FXCollections.observableArrayList();
+//	a ->new Observable[]{ a.nomProperty(), a.emailProperty()}
 
 	private IServiceAnnonceur serviceAnnonceur;
 
@@ -33,7 +34,7 @@ public class ModelAnnonceur implements IModelAnnonceur {
 	@Override
 	public ObservableList<FXAnnonceur> getAnnonceurs() {
 		// TODO Auto-generated method stub
-		return null;
+		return annonceurs;
 	}
 
 	@Override
@@ -71,4 +72,11 @@ public class ModelAnnonceur implements IModelAnnonceur {
 		actualiserListe();
 	}
 
+	public void setMapper(IMapperDtoFX mapper) {
+		this.mapper = mapper;
+	}
+
+	public void setServiceAnnonceur(IServiceAnnonceur serviceAnnonceur) {
+		this.serviceAnnonceur = serviceAnnonceur;
+	}
 }

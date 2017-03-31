@@ -132,13 +132,13 @@ public class DaoAnnonceur implements IDaoAnnonceur {
 		Annonceur annonceur = new Annonceur();
 		annonceur.setId(rs.getInt("idAnnonceur"));
 		annonceur.setNom(rs.getString("nom"));
-		annonceur.setNom(rs.getString("telephone"));
-		annonceur.setNom(rs.getString("email"));
-		annonceur.setNom(rs.getString("lieuNom"));
-		annonceur.setNom(rs.getString("lieuAdresse"));
-		annonceur.setNom(rs.getString("lieuCp"));
-		annonceur.setNom(rs.getString("lieuVille"));
-		annonceur.setNom(rs.getString("siteWeb"));
+		annonceur.setTelephone(rs.getString("telephone"));
+		annonceur.setEmail(rs.getString("email"));
+		annonceur.setLieuNom(rs.getString("lieuNom"));
+		annonceur.setLieuAdresse(rs.getString("lieuAdresse"));
+		annonceur.setLieuCp(rs.getString("lieuCp"));
+		annonceur.setLieuVille(rs.getString("lieuVille"));
+		annonceur.setSiteWeb(rs.getString("siteWeb"));
 		return annonceur;
 	}
 

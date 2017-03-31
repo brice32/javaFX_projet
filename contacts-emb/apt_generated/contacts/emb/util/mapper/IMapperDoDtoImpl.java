@@ -14,7 +14,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-03-31T12:20:35+0200",
+    date = "2017-03-31T15:14:30+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDoDtoImpl implements IMapperDoDto {
@@ -115,15 +115,15 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Annonceur annonceur = new Annonceur();
 
-        annonceur.setId( source.getId() );
-        annonceur.setNom( source.getNom() );
-        annonceur.setTelephone( source.getTelephone() );
         annonceur.setEmail( source.getEmail() );
-        annonceur.setLieuNom( source.getLieuNom() );
+        annonceur.setId( source.getId() );
         annonceur.setLieuAdresse( source.getLieuAdresse() );
         annonceur.setLieuCp( source.getLieuCp() );
+        annonceur.setLieuNom( source.getLieuNom() );
         annonceur.setLieuVille( source.getLieuVille() );
+        annonceur.setNom( source.getNom() );
         annonceur.setSiteWeb( source.getSiteWeb() );
+        annonceur.setTelephone( source.getTelephone() );
 
         return annonceur;
     }

@@ -101,6 +101,18 @@ public class ManagerSecurite implements IManagerSecurite, IServiceConnexion {
 		}
 	}
 
+	public void verifierAutorisationSecretaire() throws ExceptionAutorisation {
+		DtoCompte compteConnecte = tlCompteConnecte.get();
+		if (
+				compteConnecte == null
+				|| ! compteConnecte.isInRole( Roles.SECRETAIRE)
+//				compteConnecte == null
+//				|| ! compteConnecte.isInRole( "Administrateur" )
+			) {
+			throw new ExceptionAutorisation();
+		}
+	}
+
 	// Vérifie que le compte connecte, soit a le rôle administrateur
 	// soit a comme identifiant celui passé en paramètre
 	@Override

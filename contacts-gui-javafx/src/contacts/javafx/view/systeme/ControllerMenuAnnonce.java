@@ -70,6 +70,6 @@ public class ControllerMenuAnnonce implements IController {
 
 	@FXML
 	private void doListAnnonceur(){
-		;
+		managerGui.showView(EnumView.AnnonceurListe);
 	}
 }
