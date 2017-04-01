@@ -6,15 +6,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import contacts.commun.dto.DtoAnnonceur;
-import contacts.commun.dto.DtoCompte;
 import contacts.commun.service.IServiceAnnonceur;
 import contacts.commun.util.ExceptionAnomalie;
 import contacts.commun.util.ExceptionAppli;
 import contacts.emb.dao.IDaoAnnonceur;
-import contacts.emb.dao.IDaoCompte;
 import contacts.emb.dao.IManagerTransaction;
 import contacts.emb.dom.Annonceur;
-import contacts.emb.dom.Compte;
 import contacts.emb.util.mapper.IMapperDoDto;
 import contacts.emb.util.securite.IManagerSecurite;
 
@@ -76,13 +73,45 @@ public class ServiceAnnonceur implements IServiceAnnonceur {
 
 	@Override
 	public void modifier(DtoAnnonceur dtoannonceur) throws ExceptionAppli {
-		// TODO Auto-generated method stub
+		try {
+
+			managerSecurite.verifierAutorisationSecretaire();
+
+			managerTransaction.begin();
+			try {
+				daoAnnonceur.modifier( mapper.map( dtoannonceur ) );
+				managerTransaction.commit();
+			} catch (Exception e) {
+				managerTransaction.rollback();
+				throw e;
+			}
+
+		} catch (RuntimeException e) {
+			logger.log( Level.SEVERE, e.getMessage(), e );
+			throw new ExceptionAnomalie(e);
+		}
 
 	}
 
 	@Override
 	public void supprimer(int idAnnonceur) throws ExceptionAppli {
-		// TODO Auto-generated method stub
+	try {
+
+			managerSecurite.verifierAutorisationSecretaire();
+
+			managerTransaction.begin();
+			try {
+				daoAnnonceur.supprimer(idAnnonceur);
+				managerTransaction.commit();
+			} catch (Exception e) {
+				managerTransaction.rollback();
+				throw e;
+			}
+
+		} catch (RuntimeException e) {
+			logger.log( Level.SEVERE, e.getMessage(), e );
+			throw new ExceptionAnomalie(e);
+		}
 
 	}
 

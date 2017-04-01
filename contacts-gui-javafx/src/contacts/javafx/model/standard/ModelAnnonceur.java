@@ -1,10 +1,16 @@
 package contacts.javafx.model.standard;
 
+import static contacts.javafx.model.EnumModeVue.CREER;
+import static contacts.javafx.model.EnumModeVue.MODIFIER;
+
 import contacts.commun.dto.DtoAnnonceur;
+import contacts.commun.dto.DtoCompte;
 import contacts.commun.service.IServiceAnnonceur;
 import contacts.commun.service.IServiceCompte;
 import contacts.commun.util.ExceptionAppli;
 import contacts.javafx.fxb.FXAnnonceur;
+import contacts.javafx.fxb.FXCompte;
+import contacts.javafx.model.EnumModeVue;
 import contacts.javafx.model.IModelAnnonceur;
 import contacts.javafx.util.mapper.IMapperDtoFX;
 import contacts.javafx.view.IManagerGui;
@@ -15,20 +21,25 @@ import javafx.collections.ObservableList;
 public class ModelAnnonceur implements IModelAnnonceur {
 
 	private final ObservableList<FXAnnonceur> annonceurs = FXCollections.observableArrayList();
-//	a ->new Observable[]{ a.nomProperty(), a.emailProperty()}
+	// a ->new Observable[]{ a.nomProperty(), a.emailProperty()}
+	private final FXAnnonceur annonceurVue = new FXAnnonceur();
+
+	private FXAnnonceur annonceurCourant;
 
 	private IServiceAnnonceur serviceAnnonceur;
 
 	private IMapperDtoFX mapper;
 
+	private EnumModeVue modeVue;
+
 	@Override
 	public void actualiserListe() throws ExceptionAppli {
 		// TODO Auto-generated method stub
 		annonceurs.clear();
-		for( DtoAnnonceur dto : serviceAnnonceur.listerTout() ) {
-			FXAnnonceur annonceur = mapper.map( dto );
-				annonceurs.add(annonceur);
-			}
+		for (DtoAnnonceur dto : serviceAnnonceur.listerTout()) {
+			FXAnnonceur annonceur = mapper.map(dto);
+			annonceurs.add(annonceur);
+		}
 	}
 
 	@Override
@@ -39,32 +50,49 @@ public class ModelAnnonceur implements IModelAnnonceur {
 
 	@Override
 	public void supprimer(FXAnnonceur annonceur) throws ExceptionAppli {
-		// TODO Auto-generated method stub
+
+		serviceAnnonceur.supprimer(annonceur.getId());
+		annonceurs.remove(annonceur);
 
 	}
 
 	@Override
 	public FXAnnonceur getAnnonceurVue() {
 		// TODO Auto-generated method stub
-		return null;
+		return annonceurVue;
 	}
 
 	@Override
 	public void preparerModifier(FXAnnonceur annonceur) {
-		// TODO Auto-generated method stub
-
+		modeVue = MODIFIER;
+		annonceurCourant = annonceur;
+		mapper.update(annonceur, annonceurVue);
 	}
 
 	@Override
-	public void preparerModifier() {
+	public void preparerAjouter() {
 		// TODO Auto-generated method stub
-
+		modeVue = CREER;
+		mapper.update( new FXAnnonceur(), annonceurVue );
 	}
 
 	@Override
 	public void ValiderMiseAJour() throws ExceptionAppli {
-		// TODO Auto-generated method stub
 
+		// Crée un objet contenant le données pour la mise à jour
+		DtoAnnonceur dto = mapper.map(annonceurVue);
+
+		// Effectue la mise à jour
+		if (modeVue == CREER) {
+			int id = serviceAnnonceur.inserer(dto);
+			annonceurVue.setId(id);
+			annonceurCourant = mapper.update(annonceurVue, new FXAnnonceur());
+			annonceurs.add(annonceurCourant);
+		}
+		if (modeVue == MODIFIER) {
+			serviceAnnonceur.modifier(dto);
+			mapper.update(annonceurVue, annonceurCourant);
+		}
 	}
 
 	@Override
@@ -79,4 +107,6 @@ public class ModelAnnonceur implements IModelAnnonceur {
 	public void setServiceAnnonceur(IServiceAnnonceur serviceAnnonceur) {
 		this.serviceAnnonceur = serviceAnnonceur;
 	}
+
+
 }

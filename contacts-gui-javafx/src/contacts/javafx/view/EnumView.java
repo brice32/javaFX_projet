@@ -16,6 +16,7 @@ public enum EnumView {
 	PersonneListe   ( "personne/ViewPersonneListe.fxml" ),
 	PersonneForm    ( "personne/ViewPersonneForm.fxml" ),
 	AnnonceurListe  ( "annonceur/ViewAnnonceurListe.fxml" ),
+	AnnonceurForm   ( "annonceur/ViewAnnonceurForm.fxml" ),
 	;
 
 

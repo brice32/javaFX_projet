@@ -62,9 +62,9 @@
       <HBox alignment="CENTER" layoutX="152.0" layoutY="526.0" prefHeight="60.0" prefWidth="405.0" spacing="10.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="152.0" AnchorPane.rightAnchor="152.0">
          <children>
             <Button mnemonicParsing="false" onAction="#doActualiser" text="Actualiser" />
-            <Button mnemonicParsing="false" text="Ajouter" />
-            <Button fx:id="buttonModifier" disable="true" mnemonicParsing="false" text="Modifier" />
-            <Button fx:id="buttonSupprimer" disable="true" mnemonicParsing="false" text="Supprimer" />
+            <Button mnemonicParsing="false" onAction="#doAjouter" text="Ajouter" />
+            <Button fx:id="buttonModifier" disable="true" mnemonicParsing="false" onAction="#doModifier" text="Modifier" />
+            <Button fx:id="buttonSupprimer" disable="true" mnemonicParsing="false" onAction="#doSupprimer" text="Supprimer" />
          </children>
       </HBox>
    </children>

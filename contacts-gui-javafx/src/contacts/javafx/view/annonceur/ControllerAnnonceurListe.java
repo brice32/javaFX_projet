@@ -5,6 +5,7 @@ import contacts.javafx.fxb.FXAnnonceur;
 import contacts.javafx.fxb.FXPersonne;
 import contacts.javafx.model.IModelAnnonceur;
 import contacts.javafx.model.IModelPersonne;
+import contacts.javafx.view.EnumView;
 import contacts.javafx.view.IController;
 import contacts.javafx.view.IManagerGui;
 import javafx.collections.ListChangeListener;
@@ -72,6 +73,30 @@ public class ControllerAnnonceurListe implements IController {
 		} catch (Exception e) {
 			managerGui.afficherErreur(e);
 		};
+	}
+
+	@FXML
+	private void doAjouter() {
+		modelAnnonceur.preparerAjouter();
+		managerGui.showView( EnumView.AnnonceurForm );
+	}
+
+	@FXML
+	private void doModifier() {
+		modelAnnonceur.preparerModifier( tableViewAnnonceur.getSelectionModel().getSelectedItem() );
+		managerGui.showView( EnumView.AnnonceurForm );
+	}
+
+	@FXML
+	private void doSupprimer() {
+		boolean reponse = managerGui.demanderConfirmation( "Confirmez-vous la suppression ?" );
+		if ( reponse ) {
+			try {
+				modelAnnonceur.supprimer( tableViewAnnonceur.getSelectionModel().getSelectedItem() );
+			} catch (Exception e) {
+				managerGui.afficherErreur(e);
+			}
+		}
 	}
 
 	@Override

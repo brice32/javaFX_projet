@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,19 +70,98 @@ public class DaoAnnonceur implements IDaoAnnonceur {
 
 	@Override
 	public int inserer(Annonceur annonceur) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		ResultSet 			rs 		= null;
+		String				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			// Insère le compte
+			sql = "INSERT INTO Annonceur ( idAnnonceur, nom, telephone, email, lieuNom, lieuAdresse, lieuCp, lieuVille, siteWeb ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+			stmt = cn.prepareStatement( sql, Statement.RETURN_GENERATED_KEYS  );
+			stmt.setInt(	1, annonceur.getId() );
+			stmt.setString(	2, annonceur.getNom() );
+			stmt.setString(	3, annonceur.getTelephone() );
+			stmt.setString(	4, annonceur.getEmail() );
+			stmt.setString(	5, annonceur.getLieuNom() );
+			stmt.setString(	6, annonceur.getLieuAdresse() );
+			stmt.setString(	7, annonceur.getLieuCp() );
+			stmt.setString(	8, annonceur.getLieuVille() );
+			stmt.setString(	9, annonceur.getSiteWeb() );
+			stmt.executeUpdate();
+
+			// Récupère l'identifiant généré par le SGBD
+			rs = stmt.getGeneratedKeys();
+			rs.next();
+			annonceur.setId( rs.getInt(1) );
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try { if (rs != null) rs.close();} catch (SQLException e) {}
+			try { if (stmt != null) stmt.close();} catch (SQLException e) {}
+			try { if (cn != null) cn.close();} catch (SQLException e) {}
+		}
+
+		// Retourne l'identifiant
+		return annonceur.getId();
 	}
 
 	@Override
 	public void modifier(Annonceur annonceur) {
-		// TODO Auto-generated method stub
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		String 				sql;
 
+		try {
+			cn = dataSource.getConnection();
+
+			// Modifie le compte
+			sql = "UPDATE Annonceur SET  nom = ?, telephone = ? , email = ?, lieuNom = ?, lieuAdresse = ?, lieuCp = ?, lieuVille = ?, siteWeb = ? WHERE idAnnonceur =  ?";
+			stmt = cn.prepareStatement( sql );
+			stmt.setString(	1, annonceur.getNom() );
+			stmt.setString(	2, annonceur.getTelephone() );
+			stmt.setString(	3, annonceur.getEmail() );
+			stmt.setString(	4, annonceur.getLieuNom() );
+			stmt.setString(	5, annonceur.getLieuAdresse() );
+			stmt.setString(	6, annonceur.getLieuCp() );
+			stmt.setString(	7, annonceur.getLieuVille() );
+			stmt.setString(	8, annonceur.getSiteWeb() );
+			stmt.setInt(	9, annonceur.getId() );
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try { if (stmt != null) stmt.close();} catch (SQLException e) {}
+			try { if (cn != null) cn.close();} catch (SQLException e) {}
+		}
 	}
 
 	@Override
 	public void supprimer(int idAnnonceur) {
-		// TODO Auto-generated method stub
+		Connection			cn		= null;
+		PreparedStatement	stmt	= null;
+		String 				sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			// Supprime le compte
+			sql = "DELETE FROM Annonceur WHERE idAnnonceur = ? ";
+			stmt = cn.prepareStatement(sql);
+			stmt.setInt( 1, idAnnonceur );
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try { if (stmt != null) stmt.close();} catch (SQLException e) {}
+			try { if (cn != null) cn.close();} catch (SQLException e) {}
+		}
 
 	}
 
@@ -95,7 +175,7 @@ public class DaoAnnonceur implements IDaoAnnonceur {
 		try {
 			cn = dataSource.getConnection();
 
-			sql = "SELECT * FROM annonceur WHERE idAnnonceur = ?";
+			sql = "SELECT * FROM Annonceur WHERE idAnnonceur = ?";
 			stmt = cn.prepareStatement(sql);
 			stmt.setInt(1, idAnnonceur);
 			rs = stmt.executeQuery();

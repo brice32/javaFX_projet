@@ -16,7 +16,7 @@ public interface IModelAnnonceur {
 
 	void preparerModifier(FXAnnonceur annonceur);
 
-	void preparerModifier();
+	public void preparerAjouter();
 
 	void ValiderMiseAJour() throws ExceptionAppli;
 
