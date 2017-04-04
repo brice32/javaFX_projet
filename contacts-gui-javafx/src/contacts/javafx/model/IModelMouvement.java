@@ -24,4 +24,6 @@ public interface IModelMouvement {
 	// Initialisation
 	void refresh() throws ExceptionAppli;
 
+	void mettreVueAnnonceur(FXAnnonceur selectedItem);
+
 }

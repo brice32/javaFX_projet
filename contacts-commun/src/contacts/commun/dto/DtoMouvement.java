@@ -16,9 +16,9 @@ public class DtoMouvement implements Serializable {
 
 	private float			montant;
 
-	private Date 			date;
+	private String 			date;
 
-	private Time            heure;
+	private String          heure;
 
 	private float           solde;
 
@@ -26,7 +26,7 @@ public class DtoMouvement implements Serializable {
 
 	private String          description;
 
-	private List<DtoAnnonceur>     annonceurs = new ArrayList<>();
+	private DtoAnnonceur     annonceur = new DtoAnnonceur();
 
 	//get & set
 
@@ -36,7 +36,7 @@ public class DtoMouvement implements Serializable {
 
 	}
 
-	public DtoMouvement(int idMouvement,  float montant, Date date, Time heure, float solde, String lebelle, String description ){
+	public DtoMouvement(int idMouvement,  float montant, String date, String heure, float solde, String lebelle, String description ){
 		super();
 		this.setIdMouvement(idMouvement);
 		this.setMontant(montant);
@@ -73,21 +73,21 @@ public class DtoMouvement implements Serializable {
 		this.montant = montant;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public Time getHeure() {
-		return heure;
-	}
-
-	public void setHeure(Time heure) {
-		this.heure = heure;
-	}
+//	public Date getDate() {
+//		return date;
+//	}
+//
+//	public void setDate(Date date) {
+//		this.date = date;
+//	}
+//
+//	public Time getHeure() {
+//		return heure;
+//	}
+//
+//	public void setHeure(Time heure) {
+//		this.heure = heure;
+//	}
 
 	public float getSolde() {
 		return solde;
@@ -113,11 +113,35 @@ public class DtoMouvement implements Serializable {
 		this.description = description;
 	}
 
-	public List<DtoAnnonceur> getAnnonceurs() {
-		return annonceurs;
+//	public List<DtoAnnonceur> getAnnonceurs() {
+//		return annonceurs;
+//	}
+//
+//	public void setAnnonceurs(List<DtoAnnonceur> annonceurs) {
+//		this.annonceurs = annonceurs;
+//	}
+
+	public String getDate() {
+		return date;
 	}
 
-	public void setAnnonceurs(List<DtoAnnonceur> annonceurs) {
-		this.annonceurs = annonceurs;
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getHeure() {
+		return heure;
+	}
+
+	public void setHeure(String heure) {
+		this.heure = heure;
+	}
+
+	public DtoAnnonceur getAnnonceur() {
+		return annonceur;
+	}
+
+	public void setAnnonceur(DtoAnnonceur annonceur) {
+		this.annonceur = annonceur;
 	}
 }

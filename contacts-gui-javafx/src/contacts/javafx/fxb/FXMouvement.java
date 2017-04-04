@@ -26,7 +26,7 @@ public class FXMouvement {
 	private final FloatProperty     solde               = new SimpleFloatProperty();
 	private final StringProperty    libelle             = new SimpleStringProperty();
 	private final StringProperty    description         = new SimpleStringProperty();
-	private final ObservableList<FXAnnonceur> annonceurs = FXCollections.observableArrayList();
+	private final FXAnnonceur annonceur = new FXAnnonceur();
 
 	//get & set
 
@@ -36,7 +36,7 @@ public class FXMouvement {
 
 	}
 
-	public FXMouvement(int idMouvement, float montant, Date date, Time heure, float solde, String lebelle, String description ){
+	public FXMouvement(int idMouvement, float montant, String date, String heure, float solde, String lebelle, String description ){
 		this.setIdMouvement(idMouvement);
 //		this.setIdAnnonceur(idAnnonceur);
 		this.setMontant(montant);
@@ -97,26 +97,27 @@ public class FXMouvement {
 	}
 
 
-	public final Date getDate() {
-		Date sqlDate=new java.sql.Date(0,0,0);
-		try {
-			String date = new String(this.dateProperty().get());
-			DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
-			java.util.Date dateUtil = df.parse(date);
-			sqlDate = new java.sql.Date(dateUtil.getTime());
-
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return sqlDate;
-
+	public final String getDate() {
+//		Date sqlDate=new Date(0);
+//		try {
+//			String date = new String(this.dateProperty().get());
+//			DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.getDefault());
+//			java.util.Date dateUtil = df.parse(date);
+//			sqlDate = new java.sql.Date(dateUtil.getTime());
+//
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return sqlDate;
+		return dateProperty().get();
 	}
 
 
-	public final void setDate(final Date date) {
-		DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.FRANCE);
-		this.dateProperty().set(df.format(date));
+	public final void setDate(final String date) {
+//		DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.FRANCE);
+//		this.dateProperty().set(df.format(date));
+		this.dateProperty().set(date);
 	}
 
 
@@ -125,13 +126,15 @@ public class FXMouvement {
 	}
 
 
-	public final Time getHeure() {
-		return Time.valueOf(heureProperty().get());
+	public final String getHeure() {
+		 return heureProperty().get();
+
 	}
 
 
-	public final void setHeure(final Time heure) {
-		this.heureProperty().set(heure.toString());
+	public final void setHeure(final String heure) {
+//		this.heureProperty().set(heure.toString());
+		this.heureProperty().set(heure);
 	}
 
 
@@ -179,8 +182,8 @@ public class FXMouvement {
 		this.descriptionProperty().set(description);
 	}
 
-	public ObservableList<FXAnnonceur> getAnnonceurs(){
-		return annonceurs;
+	public FXAnnonceur getAnnonceur() {
+		return annonceur;
 	}
 
 }

@@ -13,9 +13,9 @@ public class Mouvement {
 
 		private float			montant;
 
-		private Date 			date;
+		private String 			date;
 
-		private Time            heure;
+		private String          heure;
 
 		private float           solde;
 
@@ -23,13 +23,13 @@ public class Mouvement {
 
 		private String          description;
 
-		private List<Annonceur>	annonceurs = new ArrayList<>();
+		private Annonceur	annonceur = new Annonceur();
 
 		public Mouvement(){
 
 		}
 
-		public Mouvement(int idMouvement, float montant, Date date, Time heure, float solde, String lebelle, String description ){
+		public Mouvement(int idMouvement, float montant, String date, String heure, float solde, String lebelle, String description ){
 			this.setIdMouvement(idMouvement);
 //			this.setIdAnnonceur(idAnnonceur);
 			this.setMontant(montant);
@@ -64,21 +64,21 @@ public class Mouvement {
 			this.montant = montant;
 		}
 
-		public Date getDate() {
-			return date;
-		}
-
-		public void setDate(Date date) {
-			this.date = date;
-		}
-
-		public Time getHeure() {
-			return heure;
-		}
-
-		public void setHeure(Time heure) {
-			this.heure = heure;
-		}
+//		public Date getDate() {
+//			return date;
+//		}
+//
+//		public void setDate(Date date) {
+//			this.date = date;
+//		}
+//
+//		public Time getHeure() {
+//			return heure;
+//		}
+//
+//		public void setHeure(Time heure) {
+//			this.heure = heure;
+//		}
 
 		public float getSolde() {
 			return solde;
@@ -104,12 +104,36 @@ public class Mouvement {
 			this.description = description;
 		}
 
-		public List<Annonceur> getAnnonceurs() {
-			return annonceurs;
+//		public List<Annonceur> getAnnonceurs() {
+//			return annonceurs;
+//		}
+//
+//		public void setAnnonceurs(List<Annonceur> annonceurs) {
+//			this.annonceurs = annonceurs;
+//		}
+
+		public String getDate() {
+			return date;
 		}
 
-		public void setAnnonceurs(List<Annonceur> annonceurs) {
-			this.annonceurs = annonceurs;
+		public void setDate(String date) {
+			this.date = date;
+		}
+
+		public String getHeure() {
+			return heure;
+		}
+
+		public void setHeure(String heure) {
+			this.heure = heure;
+		}
+
+		public Annonceur getAnnonceur() {
+			return annonceur;
+		}
+
+		public void setAnnonceur(Annonceur annonceur) {
+			this.annonceur = annonceur;
 		}
 
 		// Actions

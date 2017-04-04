@@ -46,6 +46,9 @@ public class ModelMouvement implements IModelMouvement {
 //			FXMouvement mouvement = mapper.map(dto);
 //			mouvements.add(mouvement);
 //		}
+		mouvements.clear();
+
+
 	}
 
 	@Override
@@ -107,4 +110,8 @@ public class ModelMouvement implements IModelMouvement {
 		actualiserListe();
 	}
 
+	public void mettreVueAnnonceur(FXAnnonceur annonceur){
+		mapper.update(annonceur, mouvementVue.getAnnonceur());
+
+	}
 }

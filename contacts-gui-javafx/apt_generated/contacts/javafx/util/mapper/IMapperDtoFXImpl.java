@@ -20,7 +20,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-04-04T00:21:59+0200",
+    date = "2017-04-04T14:31:05+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDtoFXImpl implements IMapperDtoFX {
@@ -255,12 +255,6 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
         fXMouvement.setLibelle( source.getLibelle() );
         fXMouvement.setMontant( source.getMontant() );
         fXMouvement.setSolde( source.getSolde() );
-        if ( fXMouvement.getAnnonceurs() != null ) {
-            ObservableList<FXAnnonceur> observableList = dtoAnnonceurListToFXAnnonceurObservableList( source.getAnnonceurs() );
-            if ( observableList != null ) {
-                fXMouvement.getAnnonceurs().addAll( observableList );
-            }
-        }
 
         return fXMouvement;
     }
@@ -273,10 +267,7 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         DtoMouvement dtoMouvement = new DtoMouvement();
 
-        List<DtoAnnonceur> list = fXAnnonceurObservableListToDtoAnnonceurList( source.getAnnonceurs() );
-        if ( list != null ) {
-            dtoMouvement.setAnnonceurs( list );
-        }
+        dtoMouvement.setAnnonceur( map( source.getAnnonceur() ) );
         dtoMouvement.setDate( source.getDate() );
         dtoMouvement.setDescription( source.getDescription() );
         dtoMouvement.setHeure( source.getHeure() );
@@ -352,13 +343,6 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
         cible.setLibelle( source.getLibelle() );
         cible.setMontant( source.getMontant() );
         cible.setSolde( source.getSolde() );
-        if ( cible.getAnnonceurs() != null ) {
-            cible.getAnnonceurs().clear();
-            ObservableList<FXAnnonceur> observableList = source.getAnnonceurs();
-            if ( observableList != null ) {
-                cible.getAnnonceurs().addAll( observableList );
-            }
-        }
 
         return cible;
     }
@@ -393,7 +377,7 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
     }
 
     @Override
-    public FXAnnonceur duplicate(FXAnnonceur source) {
+    public FXAnnonceur duplicate1(FXAnnonceur source) {
         if ( source == null ) {
             return null;
         }
@@ -411,6 +395,20 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
         fXAnnonceur.setTelephone( source.getTelephone() );
 
         return fXAnnonceur;
+    }
+
+    @Override
+    public ObservableList<FXAnnonceur> duplicate1(ObservableList<FXAnnonceur> source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        ObservableList<FXAnnonceur> observableList = factoryObsservableList.createObsListFXAnnonceur();
+        for ( FXAnnonceur fXAnnonceur : source ) {
+            observableList.add( duplicate1( fXAnnonceur ) );
+        }
+
+        return observableList;
     }
 
     protected ObservableList<String> stringListToStringObservableList(List<String> list) {
@@ -447,32 +445,6 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
         List<DtoTelephone> list = new ArrayList<DtoTelephone>();
         for ( FXTelephone fXTelephone : observableList ) {
             list.add( map( fXTelephone ) );
-        }
-
-        return list;
-    }
-
-    protected ObservableList<FXAnnonceur> dtoAnnonceurListToFXAnnonceurObservableList(List<DtoAnnonceur> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        ObservableList<FXAnnonceur> observableList = factoryObsservableList.createObsListFXAnnonceur();
-        for ( DtoAnnonceur dtoAnnonceur : list ) {
-            observableList.add( map( dtoAnnonceur ) );
-        }
-
-        return observableList;
-    }
-
-    protected List<DtoAnnonceur> fXAnnonceurObservableListToDtoAnnonceurList(ObservableList<FXAnnonceur> observableList) {
-        if ( observableList == null ) {
-            return null;
-        }
-
-        List<DtoAnnonceur> list = new ArrayList<DtoAnnonceur>();
-        for ( FXAnnonceur fXAnnonceur : observableList ) {
-            list.add( map( fXAnnonceur ) );
         }
 
         return list;

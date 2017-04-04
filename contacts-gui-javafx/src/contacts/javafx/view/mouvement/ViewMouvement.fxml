@@ -21,7 +21,7 @@
                   <Label layoutY="222.0" text="Description :" />
                   <HBox alignment="CENTER" layoutX="180.0" layoutY="361.0" prefHeight="60.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Button defaultButton="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="OK" />
+                        <Button fx:id="buttonAjouter" defaultButton="true" disable="true" mnemonicParsing="false" onAction="#doAjouter" prefHeight="25.0" prefWidth="60.0" text="OK" />
                      </children>
                   </HBox>
                   <TextArea fx:id="textAreaDescription" layoutX="110.0" layoutY="218.0" prefHeight="143.0" prefWidth="200.0" />

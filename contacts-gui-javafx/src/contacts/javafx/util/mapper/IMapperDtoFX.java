@@ -66,9 +66,9 @@ public interface IMapperDtoFX {
 
 	ObservableList<FXTelephone> duplicate( ObservableList<FXTelephone> source );
 
-	FXAnnonceur duplicate( FXAnnonceur source );
+	FXAnnonceur duplicate1( FXAnnonceur source );
 //
-//	ObservableList<FXAnnonceur> duplicate( ObservableList<FXAnnonceur> source );
+	ObservableList<FXAnnonceur> duplicate1( ObservableList<FXAnnonceur> source );
     // Classe auxiliaire
 
     public static class FactoryObsservableList {
