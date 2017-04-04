@@ -7,11 +7,15 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
 import contacts.commun.dto.DtoAnnonceur;
+import contacts.commun.dto.DtoCategorie;
 import contacts.commun.dto.DtoCompte;
+import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoTelephone;
 import contacts.emb.dom.Annonceur;
+import contacts.emb.dom.Categorie;
 import contacts.emb.dom.Compte;
+import contacts.emb.dom.Mouvement;
 import contacts.emb.dom.Personne;
 import contacts.emb.dom.Telephone;
 
@@ -36,6 +40,14 @@ public interface IMapperDoDto {
 
 	DtoAnnonceur map( Annonceur source );
 
+	Categorie map (DtoCategorie source );
+
+	DtoCategorie map ( Categorie source );
+
+	Mouvement map ( DtoMouvement source );
+
+	DtoMouvement map ( Mouvement source );
+
 	@Mapping( target="personne", ignore=true )
 	Telephone map( DtoTelephone source );
 
@@ -48,4 +60,5 @@ public interface IMapperDoDto {
 	 telephone.setPersonne( personne );
 	 }
 	}
+
 }

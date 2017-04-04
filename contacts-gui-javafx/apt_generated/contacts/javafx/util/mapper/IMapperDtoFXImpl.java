@@ -1,11 +1,15 @@
 package contacts.javafx.util.mapper;
 
 import contacts.commun.dto.DtoAnnonceur;
+import contacts.commun.dto.DtoCategorie;
 import contacts.commun.dto.DtoCompte;
+import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoTelephone;
 import contacts.javafx.fxb.FXAnnonceur;
+import contacts.javafx.fxb.FXCategorie;
 import contacts.javafx.fxb.FXCompte;
+import contacts.javafx.fxb.FXMouvement;
 import contacts.javafx.fxb.FXPersonne;
 import contacts.javafx.fxb.FXTelephone;
 import contacts.javafx.util.mapper.IMapperDtoFX.FactoryObsservableList;
@@ -16,7 +20,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-04-01T12:24:45+0200",
+    date = "2017-04-04T00:21:59+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDtoFXImpl implements IMapperDtoFX {
@@ -29,12 +33,12 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        target.setId( source.getId() );
-        target.setPseudo( source.getPseudo() );
-        target.setMotDePasse( source.getMotDePasse() );
         target.setEmail( source.getEmail() );
+        target.setId( source.getId() );
+        target.setMotDePasse( source.getMotDePasse() );
         target.setNom( source.getNom() );
         target.setPrenom( source.getPrenom() );
+        target.setPseudo( source.getPseudo() );
         target.setTelephone( source.getTelephone() );
         if ( target.getRoles() != null ) {
             target.getRoles().clear();
@@ -55,12 +59,12 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXCompte fXCompte = new FXCompte();
 
-        fXCompte.setId( source.getId() );
-        fXCompte.setPseudo( source.getPseudo() );
-        fXCompte.setMotDePasse( source.getMotDePasse() );
         fXCompte.setEmail( source.getEmail() );
+        fXCompte.setId( source.getId() );
+        fXCompte.setMotDePasse( source.getMotDePasse() );
         fXCompte.setNom( source.getNom() );
         fXCompte.setPrenom( source.getPrenom() );
+        fXCompte.setPseudo( source.getPseudo() );
         fXCompte.setTelephone( source.getTelephone() );
         if ( fXCompte.getRoles() != null ) {
             ObservableList<String> observableList = stringListToStringObservableList( source.getRoles() );
@@ -144,9 +148,9 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXTelephone fXTelephone_ = new FXTelephone();
 
+        fXTelephone_.setId( source.getId() );
         fXTelephone_.setLibelle( source.getLibelle() );
         fXTelephone_.setNumero( source.getNumero() );
-        fXTelephone_.setId( source.getId() );
 
         return fXTelephone_;
     }
@@ -174,15 +178,15 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXAnnonceur fXAnnonceur = new FXAnnonceur();
 
-        fXAnnonceur.setId( source.getId() );
-        fXAnnonceur.setNom( source.getNom() );
-        fXAnnonceur.setTelephone( source.getTelephone() );
         fXAnnonceur.setEmail( source.getEmail() );
-        fXAnnonceur.setLieuNom( source.getLieuNom() );
+        fXAnnonceur.setId( source.getId() );
         fXAnnonceur.setLieuAdresse( source.getLieuAdresse() );
         fXAnnonceur.setLieuCp( source.getLieuCp() );
+        fXAnnonceur.setLieuNom( source.getLieuNom() );
         fXAnnonceur.setLieuVille( source.getLieuVille() );
+        fXAnnonceur.setNom( source.getNom() );
         fXAnnonceur.setSiteWeb( source.getSiteWeb() );
+        fXAnnonceur.setTelephone( source.getTelephone() );
 
         return fXAnnonceur;
     }
@@ -209,20 +213,96 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
     }
 
     @Override
+    public FXCategorie map(DtoCategorie source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        FXCategorie fXCategorie = new FXCategorie();
+
+        fXCategorie.setIdCategorie( source.getIdCategorie() );
+        fXCategorie.setLibelle( source.getLibelle() );
+
+        return fXCategorie;
+    }
+
+    @Override
+    public DtoCategorie map(FXCategorie source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoCategorie dtoCategorie = new DtoCategorie();
+
+        dtoCategorie.setIdCategorie( source.getIdCategorie() );
+        dtoCategorie.setLibelle( source.getLibelle() );
+
+        return dtoCategorie;
+    }
+
+    @Override
+    public FXMouvement map(DtoMouvement source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        FXMouvement fXMouvement = new FXMouvement();
+
+        fXMouvement.setDate( source.getDate() );
+        fXMouvement.setDescription( source.getDescription() );
+        fXMouvement.setHeure( source.getHeure() );
+        fXMouvement.setIdMouvement( source.getIdMouvement() );
+        fXMouvement.setLibelle( source.getLibelle() );
+        fXMouvement.setMontant( source.getMontant() );
+        fXMouvement.setSolde( source.getSolde() );
+        if ( fXMouvement.getAnnonceurs() != null ) {
+            ObservableList<FXAnnonceur> observableList = dtoAnnonceurListToFXAnnonceurObservableList( source.getAnnonceurs() );
+            if ( observableList != null ) {
+                fXMouvement.getAnnonceurs().addAll( observableList );
+            }
+        }
+
+        return fXMouvement;
+    }
+
+    @Override
+    public DtoMouvement map(FXMouvement source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoMouvement dtoMouvement = new DtoMouvement();
+
+        List<DtoAnnonceur> list = fXAnnonceurObservableListToDtoAnnonceurList( source.getAnnonceurs() );
+        if ( list != null ) {
+            dtoMouvement.setAnnonceurs( list );
+        }
+        dtoMouvement.setDate( source.getDate() );
+        dtoMouvement.setDescription( source.getDescription() );
+        dtoMouvement.setHeure( source.getHeure() );
+        dtoMouvement.setIdMouvement( source.getIdMouvement() );
+        dtoMouvement.setLibelle( source.getLibelle() );
+        dtoMouvement.setMontant( source.getMontant() );
+        dtoMouvement.setSolde( source.getSolde() );
+
+        return dtoMouvement;
+    }
+
+    @Override
     public FXAnnonceur update(FXAnnonceur source, FXAnnonceur cible) {
         if ( source == null ) {
             return null;
         }
 
-        cible.setId( source.getId() );
-        cible.setNom( source.getNom() );
-        cible.setTelephone( source.getTelephone() );
         cible.setEmail( source.getEmail() );
-        cible.setLieuNom( source.getLieuNom() );
+        cible.setId( source.getId() );
         cible.setLieuAdresse( source.getLieuAdresse() );
         cible.setLieuCp( source.getLieuCp() );
+        cible.setLieuNom( source.getLieuNom() );
         cible.setLieuVille( source.getLieuVille() );
+        cible.setNom( source.getNom() );
         cible.setSiteWeb( source.getSiteWeb() );
+        cible.setTelephone( source.getTelephone() );
 
         return cible;
     }
@@ -248,6 +328,42 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
     }
 
     @Override
+    public FXCategorie update(FXCategorie source, FXCategorie cible) {
+        if ( source == null ) {
+            return null;
+        }
+
+        cible.setIdCategorie( source.getIdCategorie() );
+        cible.setLibelle( source.getLibelle() );
+
+        return cible;
+    }
+
+    @Override
+    public FXMouvement update(FXMouvement source, FXMouvement cible) {
+        if ( source == null ) {
+            return null;
+        }
+
+        cible.setDate( source.getDate() );
+        cible.setDescription( source.getDescription() );
+        cible.setHeure( source.getHeure() );
+        cible.setIdMouvement( source.getIdMouvement() );
+        cible.setLibelle( source.getLibelle() );
+        cible.setMontant( source.getMontant() );
+        cible.setSolde( source.getSolde() );
+        if ( cible.getAnnonceurs() != null ) {
+            cible.getAnnonceurs().clear();
+            ObservableList<FXAnnonceur> observableList = source.getAnnonceurs();
+            if ( observableList != null ) {
+                cible.getAnnonceurs().addAll( observableList );
+            }
+        }
+
+        return cible;
+    }
+
+    @Override
     public FXTelephone duplicate(FXTelephone source) {
         if ( source == null ) {
             return null;
@@ -255,9 +371,9 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXTelephone fXTelephone = new FXTelephone();
 
+        fXTelephone.setId( source.getId() );
         fXTelephone.setLibelle( source.getLibelle() );
         fXTelephone.setNumero( source.getNumero() );
-        fXTelephone.setId( source.getId() );
 
         return fXTelephone;
     }
@@ -274,6 +390,27 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
         }
 
         return observableList____;
+    }
+
+    @Override
+    public FXAnnonceur duplicate(FXAnnonceur source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        FXAnnonceur fXAnnonceur = new FXAnnonceur();
+
+        fXAnnonceur.setEmail( source.getEmail() );
+        fXAnnonceur.setId( source.getId() );
+        fXAnnonceur.setLieuAdresse( source.getLieuAdresse() );
+        fXAnnonceur.setLieuCp( source.getLieuCp() );
+        fXAnnonceur.setLieuNom( source.getLieuNom() );
+        fXAnnonceur.setLieuVille( source.getLieuVille() );
+        fXAnnonceur.setNom( source.getNom() );
+        fXAnnonceur.setSiteWeb( source.getSiteWeb() );
+        fXAnnonceur.setTelephone( source.getTelephone() );
+
+        return fXAnnonceur;
     }
 
     protected ObservableList<String> stringListToStringObservableList(List<String> list) {
@@ -310,6 +447,32 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
         List<DtoTelephone> list = new ArrayList<DtoTelephone>();
         for ( FXTelephone fXTelephone : observableList ) {
             list.add( map( fXTelephone ) );
+        }
+
+        return list;
+    }
+
+    protected ObservableList<FXAnnonceur> dtoAnnonceurListToFXAnnonceurObservableList(List<DtoAnnonceur> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        ObservableList<FXAnnonceur> observableList = factoryObsservableList.createObsListFXAnnonceur();
+        for ( DtoAnnonceur dtoAnnonceur : list ) {
+            observableList.add( map( dtoAnnonceur ) );
+        }
+
+        return observableList;
+    }
+
+    protected List<DtoAnnonceur> fXAnnonceurObservableListToDtoAnnonceurList(ObservableList<FXAnnonceur> observableList) {
+        if ( observableList == null ) {
+            return null;
+        }
+
+        List<DtoAnnonceur> list = new ArrayList<DtoAnnonceur>();
+        for ( FXAnnonceur fXAnnonceur : observableList ) {
+            list.add( map( fXAnnonceur ) );
         }
 
         return list;

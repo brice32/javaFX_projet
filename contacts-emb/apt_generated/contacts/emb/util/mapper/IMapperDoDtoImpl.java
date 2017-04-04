@@ -1,11 +1,15 @@
 package contacts.emb.util.mapper;
 
 import contacts.commun.dto.DtoAnnonceur;
+import contacts.commun.dto.DtoCategorie;
 import contacts.commun.dto.DtoCompte;
+import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoTelephone;
 import contacts.emb.dom.Annonceur;
+import contacts.emb.dom.Categorie;
 import contacts.emb.dom.Compte;
+import contacts.emb.dom.Mouvement;
 import contacts.emb.dom.Personne;
 import contacts.emb.dom.Telephone;
 import java.util.ArrayList;
@@ -14,7 +18,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-03-31T15:14:30+0200",
+    date = "2017-04-04T00:16:58+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDoDtoImpl implements IMapperDoDto {
@@ -150,6 +154,80 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
     }
 
     @Override
+    public Categorie map(DtoCategorie source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Categorie categorie = new Categorie();
+
+        categorie.setIdCategorie( source.getIdCategorie() );
+        categorie.setLibelle( source.getLibelle() );
+
+        return categorie;
+    }
+
+    @Override
+    public DtoCategorie map(Categorie source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoCategorie dtoCategorie = new DtoCategorie();
+
+        dtoCategorie.setIdCategorie( source.getIdCategorie() );
+        dtoCategorie.setLibelle( source.getLibelle() );
+
+        return dtoCategorie;
+    }
+
+    @Override
+    public Mouvement map(DtoMouvement source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Mouvement mouvement = new Mouvement();
+
+        List<Annonceur> list = dtoAnnonceurListToAnnonceurList( source.getAnnonceurs() );
+        if ( list != null ) {
+            mouvement.setAnnonceurs( list );
+        }
+        mouvement.setDate( source.getDate() );
+        mouvement.setDescription( source.getDescription() );
+        mouvement.setHeure( source.getHeure() );
+        mouvement.setIdMouvement( source.getIdMouvement() );
+        mouvement.setLibelle( source.getLibelle() );
+        mouvement.setMontant( source.getMontant() );
+        mouvement.setSolde( source.getSolde() );
+
+        return mouvement;
+    }
+
+    @Override
+    public DtoMouvement map(Mouvement source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoMouvement dtoMouvement = new DtoMouvement();
+
+        List<DtoAnnonceur> list = annonceurListToDtoAnnonceurList( source.getAnnonceurs() );
+        if ( list != null ) {
+            dtoMouvement.setAnnonceurs( list );
+        }
+        dtoMouvement.setDate( source.getDate() );
+        dtoMouvement.setDescription( source.getDescription() );
+        dtoMouvement.setHeure( source.getHeure() );
+        dtoMouvement.setIdMouvement( source.getIdMouvement() );
+        dtoMouvement.setLibelle( source.getLibelle() );
+        dtoMouvement.setMontant( source.getMontant() );
+        dtoMouvement.setSolde( source.getSolde() );
+
+        return dtoMouvement;
+    }
+
+    @Override
     public Telephone map(DtoTelephone source) {
         if ( source == null ) {
             return null;
@@ -200,6 +278,32 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
         List<DtoTelephone> list_ = new ArrayList<DtoTelephone>();
         for ( Telephone telephone : list ) {
             list_.add( map( telephone ) );
+        }
+
+        return list_;
+    }
+
+    protected List<Annonceur> dtoAnnonceurListToAnnonceurList(List<DtoAnnonceur> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<Annonceur> list_ = new ArrayList<Annonceur>();
+        for ( DtoAnnonceur dtoAnnonceur : list ) {
+            list_.add( map( dtoAnnonceur ) );
+        }
+
+        return list_;
+    }
+
+    protected List<DtoAnnonceur> annonceurListToDtoAnnonceurList(List<Annonceur> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<DtoAnnonceur> list_ = new ArrayList<DtoAnnonceur>();
+        for ( Annonceur annonceur : list ) {
+            list_.add( map( annonceur ) );
         }
 
         return list_;

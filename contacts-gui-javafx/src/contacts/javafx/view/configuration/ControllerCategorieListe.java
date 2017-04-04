@@ -1,7 +1,9 @@
-package contacts.javafx.view.compte;
+package contacts.javafx.view.configuration;
 
 import contacts.commun.util.ExceptionAppli;
+import contacts.javafx.fxb.FXCategorie;
 import contacts.javafx.fxb.FXCompte;
+import contacts.javafx.model.IModelCategorie;
 import contacts.javafx.model.IModelCompte;
 import contacts.javafx.view.EnumView;
 import contacts.javafx.view.IController;
@@ -15,13 +17,13 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 
-public class ControllerCompteListe implements IController {
+public class ControllerCategorieListe implements IController {
 
 
 	// Composants de la vue
 
 	@FXML
-	private ListView<FXCompte>	listView;
+	private ListView<FXCategorie>	listView;
 	@FXML
 	private Button				buttonModifier;
 	@FXML
@@ -33,7 +35,7 @@ public class ControllerCompteListe implements IController {
 	// Autres champs
 
 	private IManagerGui			managerGui;
-	private IModelCompte		modelCompte;
+	private IModelCategorie		modelCategorie;
 
 
 
@@ -42,8 +44,8 @@ public class ControllerCompteListe implements IController {
 	@FXML
 	private void doActualiser() {
 		try {
-			modelCompte.actualiserListe();
-			listView.getSelectionModel().clearSelection();;
+			modelCategorie.actualiserListe();
+			listView.getSelectionModel().clearSelection();
 		} catch (Exception e) {
 			managerGui.afficherErreur(e);
 		};
@@ -51,14 +53,14 @@ public class ControllerCompteListe implements IController {
 
 	@FXML
 	private void doAjouter() {
-		modelCompte.preparerAjouter();
-		managerGui.showView( EnumView.CompteForm );
+		modelCategorie.preparerAjouter();
+		managerGui.showView( EnumView.CategorieForm );
 	}
 
 	@FXML
 	private void doModifier() {
-		modelCompte.preparerModifier( listView.getSelectionModel().getSelectedItem() );
-		managerGui.showView( EnumView.CompteForm );
+		modelCategorie.preparerModifier( listView.getSelectionModel().getSelectedItem() );
+		managerGui.showView( EnumView.CategorieForm );
 	}
 
 	@FXML
@@ -66,7 +68,7 @@ public class ControllerCompteListe implements IController {
 		boolean reponse = managerGui.demanderConfirmation( "Confirmez-vous la suppression�?" );
 		if ( reponse ) {
 			try {
-				modelCompte.supprimer( listView.getSelectionModel().getSelectedItem() );
+				modelCategorie.supprimer( listView.getSelectionModel().getSelectedItem() );
 			} catch (Exception e) {
 				managerGui.afficherErreur(e);
 			}
@@ -94,24 +96,24 @@ public class ControllerCompteListe implements IController {
 
 		// Injection  de dépendances
 		this.managerGui = managerGui;
-		modelCompte = managerGui.getModel( IModelCompte.class );
+		modelCategorie = managerGui.getModel( IModelCategorie.class );
 
 
 		// Configuration de l'objet ListView
 
 		// Data binding
-		listView.setItems( modelCompte.getComptes() );
+		listView.setItems( modelCategorie.getCategories() );
 
 		// Affichage
 		listView.setCellFactory( (list) -> {
-		    return new ListCell<FXCompte>() {
+		    return new ListCell<FXCategorie>() {
 		        @Override
-		        protected void updateItem(FXCompte item, boolean empty) {
+		        protected void updateItem(FXCategorie item, boolean empty) {
 		            super.updateItem(item, empty);
 		            if (item == null) {
 		                setText(null);
 		            } else {
-		                setText(item.pseudoProperty().get() );
+		                setText(item.libelleProperty().get() );
 		            }
 		        }
 		    };
@@ -119,12 +121,12 @@ public class ControllerCompteListe implements IController {
 
 		// Comportement si modificaiton de la séleciton
 		listView.getSelectionModel().getSelectedItems().addListener(
-				(ListChangeListener<FXCompte>) (c) -> {
+				(ListChangeListener<FXCategorie>) (c) -> {
 					 configurerBoutons();
 		});
 
 		// Comportement si changement du contenu
-		listView.getItems().addListener( (ListChangeListener<FXCompte>) (c) -> {
+		listView.getItems().addListener( (ListChangeListener<FXCategorie>) (c) -> {
 			c.next();
 			// Après insertion d'un élément, le sélectionne
 			// Après suppression d'un élément, sélectionne le suivant

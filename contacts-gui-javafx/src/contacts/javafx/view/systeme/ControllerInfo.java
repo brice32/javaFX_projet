@@ -82,4 +82,13 @@ public class ControllerInfo implements IController {
 		managerGui.showView(EnumView.MenuAnnonce);
 	}
 
+	@FXML
+	private void doGestionConfiguration(){
+		managerGui.showView(EnumView.MenuConfiguration);
+	}
+
+	@FXML
+	private void doMouvement(){
+		managerGui.showView(EnumView.Mouvement);
+	}
 }

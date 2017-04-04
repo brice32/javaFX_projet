@@ -8,15 +8,19 @@ public enum EnumView {
 
 	// Valeurs
 
-	Info			( "systeme/ViewInfo.fxml" ),
-	Connexion		( "systeme/ViewConnexion.fxml" ),
-	MenuAnnonce     ( "systeme/ViewMenuAnnonce.fxml"),
-	CompteListe		( "compte/ViewCompteListe.fxml" ),
-	CompteForm		( "compte/ViewCompteForm.fxml" ),
-	PersonneListe   ( "personne/ViewPersonneListe.fxml" ),
-	PersonneForm    ( "personne/ViewPersonneForm.fxml" ),
-	AnnonceurListe  ( "annonceur/ViewAnnonceurListe.fxml" ),
-	AnnonceurForm   ( "annonceur/ViewAnnonceurForm.fxml" ),
+	Info			 ( "systeme/ViewInfo.fxml" ),
+	Connexion		 ( "systeme/ViewConnexion.fxml" ),
+	MenuAnnonce      ( "systeme/ViewMenuAnnonce.fxml"),
+	MenuConfiguration( "systeme/ViewMenuConfiguration.fxml" ),
+	CompteListe		 ( "compte/ViewCompteListe.fxml" ),
+	CompteForm		 ( "compte/ViewCompteForm.fxml" ),
+	PersonneListe    ( "personne/ViewPersonneListe.fxml" ),
+	PersonneForm     ( "personne/ViewPersonneForm.fxml" ),
+	AnnonceurListe   ( "annonceur/ViewAnnonceurListe.fxml" ),
+	AnnonceurForm    ( "annonceur/ViewAnnonceurForm.fxml" ),
+	CategorieListe   ( "configuration/ViewCategorieListe.fxml" ),
+	CategorieForm    ( "configuration/ViewCategorieForm.fxml" ),
+	Mouvement        ( "mouvement/ViewMouvement.fxml"),
 	;
 
 

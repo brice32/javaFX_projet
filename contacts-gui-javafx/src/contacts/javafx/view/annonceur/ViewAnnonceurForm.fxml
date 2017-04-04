@@ -27,7 +27,7 @@
                   <TextField fx:id="textFieldLieuAdresse" layoutX="110.0" layoutY="179.0" prefHeight="25.0" prefWidth="200.0" />
                   <Label layoutY="222.0" text="Lieu Cp :" />
                   <TextField fx:id="textFieldLieuCp" layoutX="110.0" layoutY="212.0" prefHeight="25.0" prefWidth="200.0" />
-                  <HBox alignment="CENTER" layoutX="49.0" layoutY="355.0" prefHeight="60.0" prefWidth="200.0" spacing="10.0">
+                  <HBox alignment="CENTER" layoutX="110.0" layoutY="357.0" prefHeight="60.0" prefWidth="200.0" spacing="10.0">
                      <children>
                         <Button defaultButton="true" mnemonicParsing="false" onAction="#doValider" prefHeight="25.0" prefWidth="60.0" text="OK" />
                         <Button cancelButton="true" mnemonicParsing="false" onAction="#doAnnuler" text="Annuler" />

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contacts.javafx.view.systeme.ControllerMenuConfiguration">
    <children>
       <SplitPane dividerPositions="0.2982456140350877" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -47,17 +47,17 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="598.0" prefWidth="532.0" styleClass="background">
                <children>
                   <HBox alignment="CENTER" layoutX="32.0" layoutY="55.0" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="21.0" AnchorPane.topAnchor="55.0" />
-                  <HBox alignment="CENTER" layoutX="155.0" layoutY="28.0" prefHeight="27.0" prefWidth="246.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="154.0">
+                  <HBox alignment="CENTER" layoutX="107.0" layoutY="28.0" minWidth="-Infinity" prefHeight="27.0" prefWidth="347.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="106.0">
                      <children>
                         <Label fx:id="labelTitre" alignment="CENTER" styleClass="titre-vue" text="Titre" />
                      </children>
                   </HBox>
                   <GridPane alignment="CENTER" layoutX="42.0" layoutY="65.0" maxHeight="491.0" maxWidth="502.0" prefHeight="491.0" prefWidth="502.0">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Rubrique" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="291.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Zone" GridPane.columnIndex="1" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Pamamètre" GridPane.rowIndex="1" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Catégorie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Rubrique" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Zone" GridPane.columnIndex="1" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Pamamètre" GridPane.rowIndex="1" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#doCategorieListe" prefHeight="100.0" prefWidth="200.0" text="Catégorie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />

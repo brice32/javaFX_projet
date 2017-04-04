@@ -18,7 +18,7 @@ import contacts.emb.util.securite.IManagerSecurite;
 public class ServiceAnnonceur implements IServiceAnnonceur {
 
 	// Logger
-	private static final Logger logger = Logger.getLogger(ServicePersonne.class.getName());
+	private static final Logger logger = Logger.getLogger(ServiceAnnonceur.class.getName());
 
 
 	// Champs
