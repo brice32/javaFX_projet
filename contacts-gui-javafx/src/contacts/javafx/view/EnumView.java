@@ -21,6 +21,10 @@ public enum EnumView {
 	CategorieListe   ( "configuration/ViewCategorieListe.fxml" ),
 	CategorieForm    ( "configuration/ViewCategorieForm.fxml" ),
 	Mouvement        ( "mouvement/ViewMouvement.fxml"),
+	ZoneListe 		("zone/ViewZoneListe.fxml"),
+	ZoneForm		 ("zone/ViewZoneForm.fxml"),
+	RubriqueListe	 ("rubrique/ViewRubriqueListe.fxml"),
+	RubriqueForm 	("rubrique/ViewRubriqueForm.fxml"),
 	;
 
 

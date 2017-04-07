@@ -5,20 +5,24 @@ import contacts.commun.dto.DtoCategorie;
 import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
+import contacts.commun.dto.DtoRubrique;
 import contacts.commun.dto.DtoTelephone;
+import contacts.commun.dto.DtoZone;
 import contacts.emb.dom.Annonceur;
 import contacts.emb.dom.Categorie;
 import contacts.emb.dom.Compte;
 import contacts.emb.dom.Mouvement;
 import contacts.emb.dom.Personne;
+import contacts.emb.dom.Rubrique;
 import contacts.emb.dom.Telephone;
+import contacts.emb.dom.Zone;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-04-04T14:31:57+0200",
+    date = "2017-04-07T11:48:03+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDoDtoImpl implements IMapperDoDto {
@@ -219,6 +223,62 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
         dtoMouvement.setSolde( source.getSolde() );
 
         return dtoMouvement;
+    }
+
+    @Override
+    public Zone map(DtoZone source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Zone zone = new Zone();
+
+        zone.setId( source.getId() );
+        zone.setNom( source.getNom() );
+
+        return zone;
+    }
+
+    @Override
+    public DtoZone map(Zone source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoZone dtoZone = new DtoZone();
+
+        dtoZone.setId( source.getId() );
+        dtoZone.setNom( source.getNom() );
+
+        return dtoZone;
+    }
+
+    @Override
+    public Rubrique map(DtoRubrique source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Rubrique rubrique = new Rubrique();
+
+        rubrique.setId( source.getId() );
+        rubrique.setNom( source.getNom() );
+
+        return rubrique;
+    }
+
+    @Override
+    public DtoRubrique map(Rubrique source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoRubrique dtoRubrique = new DtoRubrique();
+
+        dtoRubrique.setId( source.getId() );
+        dtoRubrique.setNom( source.getNom() );
+
+        return dtoRubrique;
     }
 
     @Override

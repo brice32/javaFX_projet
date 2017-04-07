@@ -54,8 +54,8 @@
                   </HBox>
                   <GridPane alignment="CENTER" layoutX="42.0" layoutY="65.0" maxHeight="491.0" maxWidth="502.0" prefHeight="491.0" prefWidth="502.0">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Rubrique" />
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Zone" GridPane.columnIndex="1" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" onAction="#doRubriqueListe" prefHeight="100.0" prefWidth="200.0" text="Rubrique" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="291.0" layoutY="55.0" mnemonicParsing="false" onAction="#doZoneListe" prefHeight="100.0" prefWidth="200.0" text="Zone" GridPane.columnIndex="1" />
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Pamamètre" GridPane.rowIndex="1" />
                         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#doCategorieListe" prefHeight="100.0" prefWidth="200.0" text="Catégorie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>

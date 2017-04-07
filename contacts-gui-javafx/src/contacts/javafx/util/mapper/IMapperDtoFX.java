@@ -9,13 +9,17 @@ import contacts.commun.dto.DtoCategorie;
 import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
+import contacts.commun.dto.DtoRubrique;
 import contacts.commun.dto.DtoTelephone;
+import contacts.commun.dto.DtoZone;
 import contacts.javafx.fxb.FXAnnonceur;
 import contacts.javafx.fxb.FXCategorie;
 import contacts.javafx.fxb.FXCompte;
 import contacts.javafx.fxb.FXMouvement;
 import contacts.javafx.fxb.FXPersonne;
+import contacts.javafx.fxb.FXRubrique;
 import contacts.javafx.fxb.FXTelephone;
+import contacts.javafx.fxb.FXZone;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -70,6 +74,18 @@ public interface IMapperDtoFX {
 //
 	ObservableList<FXAnnonceur> duplicate1( ObservableList<FXAnnonceur> source );
     // Classe auxiliaire
+
+	FXZone update( FXZone source, @MappingTarget FXZone cible);
+
+	FXZone map( DtoZone source );
+
+	DtoZone map( FXZone source );
+
+	FXRubrique update( FXRubrique source, @MappingTarget FXRubrique cible);
+
+	FXRubrique map( DtoRubrique source );
+
+	DtoRubrique map( FXRubrique source );
 
     public static class FactoryObsservableList {
 

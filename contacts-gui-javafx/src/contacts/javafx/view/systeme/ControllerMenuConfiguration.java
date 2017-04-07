@@ -65,4 +65,14 @@ public class ControllerMenuConfiguration implements IController {
 		managerGui.showView(EnumView.CategorieListe);
 	}
 
+	@FXML
+	public void doRubriqueListe(){
+		managerGui.showView(EnumView.RubriqueListe);
+	}
+
+	@FXML
+	public void doZoneListe(){
+		managerGui.showView(EnumView.ZoneListe);
+	}
+
 }

@@ -5,13 +5,17 @@ import contacts.commun.dto.DtoCategorie;
 import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
+import contacts.commun.dto.DtoRubrique;
 import contacts.commun.dto.DtoTelephone;
+import contacts.commun.dto.DtoZone;
 import contacts.javafx.fxb.FXAnnonceur;
 import contacts.javafx.fxb.FXCategorie;
 import contacts.javafx.fxb.FXCompte;
 import contacts.javafx.fxb.FXMouvement;
 import contacts.javafx.fxb.FXPersonne;
+import contacts.javafx.fxb.FXRubrique;
 import contacts.javafx.fxb.FXTelephone;
+import contacts.javafx.fxb.FXZone;
 import contacts.javafx.util.mapper.IMapperDtoFX.FactoryObsservableList;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +24,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-04-04T14:31:05+0200",
+    date = "2017-04-07T11:50:47+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDtoFXImpl implements IMapperDtoFX {
@@ -409,6 +413,86 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
         }
 
         return observableList;
+    }
+
+    @Override
+    public FXZone update(FXZone source, FXZone cible) {
+        if ( source == null ) {
+            return null;
+        }
+
+        cible.setId( source.getId() );
+        cible.setNom( source.getNom() );
+
+        return cible;
+    }
+
+    @Override
+    public FXZone map(DtoZone source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        FXZone fXZone = new FXZone();
+
+        fXZone.setId( source.getId() );
+        fXZone.setNom( source.getNom() );
+
+        return fXZone;
+    }
+
+    @Override
+    public DtoZone map(FXZone source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoZone dtoZone = new DtoZone();
+
+        dtoZone.setId( source.getId() );
+        dtoZone.setNom( source.getNom() );
+
+        return dtoZone;
+    }
+
+    @Override
+    public FXRubrique update(FXRubrique source, FXRubrique cible) {
+        if ( source == null ) {
+            return null;
+        }
+
+        cible.setId( source.getId() );
+        cible.setNom( source.getNom() );
+
+        return cible;
+    }
+
+    @Override
+    public FXRubrique map(DtoRubrique source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        FXRubrique fXRubrique = new FXRubrique();
+
+        fXRubrique.setId( source.getId() );
+        fXRubrique.setNom( source.getNom() );
+
+        return fXRubrique;
+    }
+
+    @Override
+    public DtoRubrique map(FXRubrique source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoRubrique dtoRubrique = new DtoRubrique();
+
+        dtoRubrique.setId( source.getId() );
+        dtoRubrique.setNom( source.getNom() );
+
+        return dtoRubrique;
     }
 
     protected ObservableList<String> stringListToStringObservableList(List<String> list) {
