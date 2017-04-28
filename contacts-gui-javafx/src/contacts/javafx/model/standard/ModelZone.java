@@ -19,9 +19,9 @@ import javafx.collections.ObservableList;
 public class ModelZone implements IModelZone {
 
 	// donnees observables
-	
-	private final ObservableList<FXZone> zones = FXCollections.observableArrayList( 
-			c ->  new Observable[] { c.nomProperty()  } 
+
+	private final ObservableList<FXZone> zones = FXCollections.observableArrayList(
+			c ->  new Observable[] { c.nomProperty()  }
 		);
 	private final FXZone zoneVue= new FXZone(99, "XXXXX");
 
@@ -33,7 +33,7 @@ public class ModelZone implements IModelZone {
 	private IServiceZone serviceZone;
 
 	private IMapperDtoFX mapper;
-	
+
 	public void actualiserListe() throws ExceptionAppli{
 		zones.clear();
 		for( DtoZone dto : serviceZone.listerTout() ) {
@@ -46,18 +46,18 @@ public class ModelZone implements IModelZone {
 		// TODO Auto-generated method stub
 		return zones;
 	}
-	
+
 	@Override
 	public void supprimer(FXZone zone) throws ExceptionAppli{
 		serviceZone.supprimer(zone.getId());
 		zones.remove(zone);
 	}
-	
+
 	@Override
 	public FXZone getZoneVue(){
 		return zoneVue;
 	}
-	
+
 	@Override
 	public void preparerModifier( FXZone zone ){
 		if(zone!=null){
@@ -79,24 +79,24 @@ public class ModelZone implements IModelZone {
 //		copierDonnees(personneCourant, personneVue);
 		mapper.update(zoneCourant, zoneVue);
 	}
-	
+
 	@Override
 	public void refresh() throws ExceptionAppli {
 	 actualiserListe();
 	}
-	
+
 	@Override
 	public void ValiderMiseAJour( ) throws ExceptionAppli{
 //		int dernierId;
 		String message="";
 		String Nom=zoneVue.getNom();
-		
+
 		if(Nom==null||Nom.length()==0){
 			message+="Le nom de la zone ne doit pas etre vide.\n";
 		}else if(Nom.length()>=25){
 			message+="La longueur de la zone ne doit pas exceder 25 caracteres.\n";
 		}
-		
+
 		if(message.length()==0){
 			if(zoneVue.getId()==0){
 
@@ -139,7 +139,7 @@ AlertType.INFORMATION*/
 
 	}
 
-	
+
 	public void setServiceZone(IServiceZone serviceZone) {
 		this.serviceZone = serviceZone;
 	}

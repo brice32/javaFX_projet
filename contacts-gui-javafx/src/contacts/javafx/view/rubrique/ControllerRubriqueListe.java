@@ -57,7 +57,7 @@ public class ControllerRubriqueListe implements IController {
 		ObservableList<FXRubrique> selectedItems = listViewRubriques.getSelectionModel().getSelectedItems();
 		FXRubrique rubrique = (FXRubrique) selectedItems.get(0);
 		// System.out.println("supprimer"+selectedItems);
-		message = "Est-ce que vous voulez supprimer la rubrique : " + rubrique.getNom() 
+		message = "Est-ce que vous voulez supprimer la rubrique : " + rubrique.getNom()
 				+ "?";
 		// if(Main.demanderConfirmation(message)){
 		if (managerGui.demanderConfirmation(message)) {

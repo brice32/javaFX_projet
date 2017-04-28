@@ -1,8 +1,8 @@
-package contacts.javafx.view.zone;
+package contacts.javafx.view.tarif;
 
 import contacts.commun.util.ExceptionAppli;
-import contacts.javafx.fxb.FXZone;
-import contacts.javafx.model.IModelZone;
+import contacts.javafx.fxb.FXTarif;
+import contacts.javafx.model.IModelTarif;
 import contacts.javafx.view.EnumView;
 import contacts.javafx.view.IController;
 import contacts.javafx.view.IManagerGui;
@@ -14,12 +14,13 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
-public class ControllerZoneListe implements IController{
+public class ControllerTarifListe implements IController{
 
+	
 	@FXML
-	private ListView<FXZone> listViewZones;
+	private ListView<FXTarif> ListTarifViews;
 
-	private IModelZone modelZone;
+	private IModelTarif modelTarif;
 
 	@FXML
 	private Button Modifier;
@@ -29,6 +30,7 @@ public class ControllerZoneListe implements IController{
 
 	private IManagerGui managerGui;
 
+	
 	@FXML
 	private void initialize() {
 
@@ -38,32 +40,32 @@ public class ControllerZoneListe implements IController{
 
 	@FXML
 	private void doAjouter() {
-		modelZone.preparerModifier();
+		//modelTarif.preparerModifier();
+		modelTarif.ValiderMiseAjour();
 		// Main.showViewPersonneForm();
-		managerGui.showView(EnumView.ZoneForm);
+		managerGui.showView(EnumView.PersonneForm);
 	}
 
 	@FXML
 	private void doModifier() {
-		ObservableList<FXZone> selectedItems = listViewZones.getSelectionModel().getSelectedItems();
-		FXZone zone = (FXZone) selectedItems.get(0);
-		modelZone.preparerModifier(zone);
+		ObservableList<FXTarif> selectedItems = ListTarifViews.getSelectionModel().getSelectedItems();
+		FXTarif tarif = (FXTarif) selectedItems.get(0);
+		modelTarif.preparerModifier(tarif);
 		// Main.showViewPersonneForm();
-		managerGui.showView(EnumView.ZoneForm);
+		managerGui.showView(EnumView.TarifForm);
 	}
 
 	@FXML
 	private void doSupprimer() {
 		String message;
-		ObservableList<FXZone> selectedItems = listViewZones.getSelectionModel().getSelectedItems();
-		FXZone zone = (FXZone) selectedItems.get(0);
-		// System.out.println("supprimer"+selectedItems);
-		message = "Est-ce que vous voulez supprimer cette Zone : " + zone.getNom()
-				+ "?";
-		// if(Main.demanderConfirmation(message)){
+		ObservableList<FXTarif> selectedItems = ListTarifViews.getSelectionModel().getSelectedItems();
+		FXTarif tarif = (FXTarif) selectedItems.get(0);
+		
+		message = "Est-ce que vous voulez supprimer le tarif : " + selectedItems + "?";
+
 		if (managerGui.demanderConfirmation(message)) {
 			try {
-				modelZone.supprimer(zone);
+				modelTarif.Supprimer(tarif);
 			} catch (ExceptionAppli e) {
 				// TODO Auto-generated catch block
 				// e.printStackTrace();
@@ -74,13 +76,7 @@ public class ControllerZoneListe implements IController{
 
 	@FXML
 	private void doActualiser() {
-		try {
-			modelZone.actualiserListe();
-		} catch (ExceptionAppli e) {
-			// TODO Auto-generated catch block
-			// e.printStackTrace();
-			managerGui.afficherErreur(e);
-		}
+		modelTarif.actualiserListe();
 	}
 
 	@FXML
@@ -95,11 +91,11 @@ public class ControllerZoneListe implements IController{
 	@Override
 	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
 		this.managerGui = managerGui;
-		modelZone = managerGui.getModel(IModelZone.class);
+		modelTarif = managerGui.getModel(IModelTarif.class);
 
-		listViewZones.setItems(modelZone.getZones());
-		listViewZones.getSelectionModel().getSelectedItems().addListener((ListChangeListener<FXZone>) (c) -> {
-			if (listViewZones.getSelectionModel().getSelectedItem() != null) {
+		ListTarifViews.setItems(modelTarif.getTarifs());
+		ListTarifViews.getSelectionModel().getSelectedItems().addListener((ListChangeListener<FXTarif>) (c) -> {
+			if (ListTarifViews.getSelectionModel().getSelectedItem() != null) {
 				Modifier.setDisable(false);
 				Supprimer.setDisable(false);
 			} else {
@@ -108,5 +104,12 @@ public class ControllerZoneListe implements IController{
 			}
 		});
 	}
+	
+	
+	
+	
+	
+	
+
 
 }

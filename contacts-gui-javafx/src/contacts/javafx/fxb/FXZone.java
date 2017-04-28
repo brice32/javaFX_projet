@@ -10,12 +10,12 @@ import javafx.collections.ObservableList;
 public class FXZone {
 	private final IntegerProperty id = new SimpleIntegerProperty();
 	private final StringProperty nom = new SimpleStringProperty();
-	private final ObservableList<FXZone> zones = FXCollections.observableArrayList();
+//	private final ObservableList<FXZone> zones = FXCollections.observableArrayList();
 
 	public FXZone(){
-		
+
 	}
-	
+
 	public FXZone(int id,String nom){
 		setId(id);
 		setNom(nom);
@@ -25,13 +25,13 @@ public class FXZone {
 	public final StringProperty nomProperty() {
 		return this.nom;
 	}
-	
+
 
 
 	public final String getNom() {
 		return this.nomProperty().get();
 	}
-	
+
 
 
 	public final void setNom(final String nom) {
@@ -42,13 +42,13 @@ public class FXZone {
 	public final IntegerProperty idProperty() {
 		return this.id;
 	}
-	
+
 
 
 	public final int getId() {
 		return this.idProperty().get();
 	}
-	
+
 
 
 	public final void setId(final int id) {
@@ -58,12 +58,12 @@ public class FXZone {
 	@Override
 	public String toString() {
 		return getNom();
-		
+
 	}
-	
-	
 
 
-	
-	
+
+
+
+
 }

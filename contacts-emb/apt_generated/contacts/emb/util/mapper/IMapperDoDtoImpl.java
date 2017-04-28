@@ -22,7 +22,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-04-07T11:48:03+0200",
+    date = "2017-04-28T12:19:35+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDoDtoImpl implements IMapperDoDto {
