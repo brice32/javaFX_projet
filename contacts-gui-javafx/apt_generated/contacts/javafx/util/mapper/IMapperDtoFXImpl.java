@@ -26,8 +26,8 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-04-28T23:40:34+0200",
-    comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
+    date = "2017-04-28T23:57:35+0200",
+    comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_131 (Oracle Corporation)"
 )
 public class IMapperDtoFXImpl implements IMapperDtoFX {
 
@@ -39,12 +39,12 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        target.setEmail( source.getEmail() );
         target.setId( source.getId() );
+        target.setPseudo( source.getPseudo() );
         target.setMotDePasse( source.getMotDePasse() );
+        target.setEmail( source.getEmail() );
         target.setNom( source.getNom() );
         target.setPrenom( source.getPrenom() );
-        target.setPseudo( source.getPseudo() );
         target.setTelephone( source.getTelephone() );
         if ( target.getRoles() != null ) {
             target.getRoles().clear();
@@ -65,12 +65,12 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXCompte fXCompte = new FXCompte();
 
-        fXCompte.setEmail( source.getEmail() );
         fXCompte.setId( source.getId() );
+        fXCompte.setPseudo( source.getPseudo() );
         fXCompte.setMotDePasse( source.getMotDePasse() );
+        fXCompte.setEmail( source.getEmail() );
         fXCompte.setNom( source.getNom() );
         fXCompte.setPrenom( source.getPrenom() );
-        fXCompte.setPseudo( source.getPseudo() );
         fXCompte.setTelephone( source.getTelephone() );
         if ( fXCompte.getRoles() != null ) {
             ObservableList<String> observableList = stringListToStringObservableList( source.getRoles() );
@@ -154,9 +154,9 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXTelephone fXTelephone_ = new FXTelephone();
 
-        fXTelephone_.setId( source.getId() );
         fXTelephone_.setLibelle( source.getLibelle() );
         fXTelephone_.setNumero( source.getNumero() );
+        fXTelephone_.setId( source.getId() );
 
         return fXTelephone_;
     }
@@ -184,15 +184,15 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXAnnonceur fXAnnonceur = new FXAnnonceur();
 
-        fXAnnonceur.setEmail( source.getEmail() );
         fXAnnonceur.setId( source.getId() );
+        fXAnnonceur.setNom( source.getNom() );
+        fXAnnonceur.setTelephone( source.getTelephone() );
+        fXAnnonceur.setEmail( source.getEmail() );
+        fXAnnonceur.setLieuNom( source.getLieuNom() );
         fXAnnonceur.setLieuAdresse( source.getLieuAdresse() );
         fXAnnonceur.setLieuCp( source.getLieuCp() );
-        fXAnnonceur.setLieuNom( source.getLieuNom() );
         fXAnnonceur.setLieuVille( source.getLieuVille() );
-        fXAnnonceur.setNom( source.getNom() );
         fXAnnonceur.setSiteWeb( source.getSiteWeb() );
-        fXAnnonceur.setTelephone( source.getTelephone() );
 
         return fXAnnonceur;
     }
@@ -254,13 +254,13 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXMouvement fXMouvement = new FXMouvement();
 
-        fXMouvement.setDate( source.getDate() );
-        fXMouvement.setDescription( source.getDescription() );
-        fXMouvement.setHeure( source.getHeure() );
         fXMouvement.setIdMouvement( source.getIdMouvement() );
-        fXMouvement.setLibelle( source.getLibelle() );
         fXMouvement.setMontant( source.getMontant() );
+        fXMouvement.setDate( source.getDate() );
+        fXMouvement.setHeure( source.getHeure() );
         fXMouvement.setSolde( source.getSolde() );
+        fXMouvement.setLibelle( source.getLibelle() );
+        fXMouvement.setDescription( source.getDescription() );
 
         return fXMouvement;
     }
@@ -291,15 +291,15 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        cible.setEmail( source.getEmail() );
         cible.setId( source.getId() );
+        cible.setNom( source.getNom() );
+        cible.setTelephone( source.getTelephone() );
+        cible.setEmail( source.getEmail() );
+        cible.setLieuNom( source.getLieuNom() );
         cible.setLieuAdresse( source.getLieuAdresse() );
         cible.setLieuCp( source.getLieuCp() );
-        cible.setLieuNom( source.getLieuNom() );
         cible.setLieuVille( source.getLieuVille() );
-        cible.setNom( source.getNom() );
         cible.setSiteWeb( source.getSiteWeb() );
-        cible.setTelephone( source.getTelephone() );
 
         return cible;
     }
@@ -342,13 +342,13 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        cible.setDate( source.getDate() );
-        cible.setDescription( source.getDescription() );
-        cible.setHeure( source.getHeure() );
         cible.setIdMouvement( source.getIdMouvement() );
-        cible.setLibelle( source.getLibelle() );
         cible.setMontant( source.getMontant() );
+        cible.setDate( source.getDate() );
+        cible.setHeure( source.getHeure() );
         cible.setSolde( source.getSolde() );
+        cible.setLibelle( source.getLibelle() );
+        cible.setDescription( source.getDescription() );
 
         return cible;
     }
@@ -361,9 +361,9 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXTelephone fXTelephone = new FXTelephone();
 
-        fXTelephone.setId( source.getId() );
         fXTelephone.setLibelle( source.getLibelle() );
         fXTelephone.setNumero( source.getNumero() );
+        fXTelephone.setId( source.getId() );
 
         return fXTelephone;
     }
@@ -390,15 +390,15 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXAnnonceur fXAnnonceur = new FXAnnonceur();
 
-        fXAnnonceur.setEmail( source.getEmail() );
         fXAnnonceur.setId( source.getId() );
+        fXAnnonceur.setNom( source.getNom() );
+        fXAnnonceur.setTelephone( source.getTelephone() );
+        fXAnnonceur.setEmail( source.getEmail() );
+        fXAnnonceur.setLieuNom( source.getLieuNom() );
         fXAnnonceur.setLieuAdresse( source.getLieuAdresse() );
         fXAnnonceur.setLieuCp( source.getLieuCp() );
-        fXAnnonceur.setLieuNom( source.getLieuNom() );
         fXAnnonceur.setLieuVille( source.getLieuVille() );
-        fXAnnonceur.setNom( source.getNom() );
         fXAnnonceur.setSiteWeb( source.getSiteWeb() );
-        fXAnnonceur.setTelephone( source.getTelephone() );
 
         return fXAnnonceur;
     }
@@ -423,8 +423,8 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        cible.setId( source.getId() );
         cible.setNom( source.getNom() );
+        cible.setId( source.getId() );
 
         return cible;
     }
@@ -437,8 +437,8 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXZone fXZone = new FXZone();
 
-        fXZone.setId( source.getId() );
         fXZone.setNom( source.getNom() );
+        fXZone.setId( source.getId() );
 
         return fXZone;
     }
@@ -463,8 +463,8 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        cible.setId( source.getId() );
         cible.setNom( source.getNom() );
+        cible.setId( source.getId() );
 
         return cible;
     }
@@ -477,8 +477,8 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXRubrique fXRubrique = new FXRubrique();
 
-        fXRubrique.setId( source.getId() );
         fXRubrique.setNom( source.getNom() );
+        fXRubrique.setId( source.getId() );
 
         return fXRubrique;
     }

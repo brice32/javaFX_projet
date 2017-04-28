@@ -57,7 +57,7 @@ public class ControllerMouvement implements IController {
 		// TODO Auto-generated method stub
 		this.managerGui=managerGui;
 
-		System.out.println("ok");
+//		System.out.println("ok");
 		modelAnnonceur = managerGui.getModel(IModelAnnonceur.class);
 		modelMouvement = managerGui.getModel(IModelMouvement.class);
 		modelMouvement.preparerAjouter();
