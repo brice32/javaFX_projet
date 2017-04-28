@@ -6,6 +6,7 @@ import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoRubrique;
+import contacts.commun.dto.DtoTarif;
 import contacts.commun.dto.DtoTelephone;
 import contacts.commun.dto.DtoZone;
 import contacts.javafx.fxb.FXAnnonceur;
@@ -14,6 +15,7 @@ import contacts.javafx.fxb.FXCompte;
 import contacts.javafx.fxb.FXMouvement;
 import contacts.javafx.fxb.FXPersonne;
 import contacts.javafx.fxb.FXRubrique;
+import contacts.javafx.fxb.FXTarif;
 import contacts.javafx.fxb.FXTelephone;
 import contacts.javafx.fxb.FXZone;
 import contacts.javafx.util.mapper.IMapperDtoFX.FactoryObsservableList;
@@ -24,8 +26,8 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-04-28T12:54:34+0200",
-    comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
+    date = "2017-04-28T23:22:58+0200",
+    comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_131 (Oracle Corporation)"
 )
 public class IMapperDtoFXImpl implements IMapperDtoFX {
 
@@ -493,6 +495,53 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
         dtoRubrique.setNom( source.getNom() );
 
         return dtoRubrique;
+    }
+
+    @Override
+    public FXTarif map(DtoTarif source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        FXTarif fXTarif = new FXTarif();
+
+        fXTarif.setId( source.getId() );
+        fXTarif.settarifConference( source.getTarifConference() );
+        fXTarif.settarifRelief( source.getTarifRelief() );
+        fXTarif.settarifStage( source.getTarifStage() );
+
+        return fXTarif;
+    }
+
+    @Override
+    public FXTarif update(FXTarif source, FXTarif cible) {
+        if ( source == null ) {
+            return null;
+        }
+
+        cible.setId( source.getId() );
+        cible.settarifConference( source.gettarifConference() );
+        cible.settarifRelief( source.gettarifRelief() );
+        cible.settarifStage( source.gettarifStage() );
+
+        return cible;
+    }
+
+    @Override
+    public DtoTarif map(FXTarif source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoTarif dtoTarif = new DtoTarif();
+
+        dtoTarif.setDate( source.getDate() );
+        dtoTarif.setId( source.getId() );
+        dtoTarif.setTarifConference( source.gettarifConference() );
+        dtoTarif.setTarifRelief( source.gettarifRelief() );
+        dtoTarif.setTarifStage( source.gettarifStage() );
+
+        return dtoTarif;
     }
 
     protected ObservableList<String> stringListToStringObservableList(List<String> list) {

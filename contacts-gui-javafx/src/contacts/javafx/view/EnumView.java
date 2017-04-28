@@ -25,6 +25,8 @@ public enum EnumView {
 	ZoneForm		 ("zone/ViewZoneForm.fxml"),
 	RubriqueListe	 ("rubrique/ViewRubriqueListe.fxml"),
 	RubriqueForm 	("rubrique/ViewRubriqueForm.fxml"),
+	TarifListe     ("tarif/ViewTarifListe.fxml"),
+	TarifForm      ("tarif/ViewTarifForm.fxml"),
 	;
 
 

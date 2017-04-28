@@ -10,6 +10,7 @@ import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoRubrique;
+import contacts.commun.dto.DtoTarif;
 import contacts.commun.dto.DtoTelephone;
 import contacts.commun.dto.DtoZone;
 import contacts.javafx.fxb.FXAnnonceur;
@@ -18,6 +19,7 @@ import contacts.javafx.fxb.FXCompte;
 import contacts.javafx.fxb.FXMouvement;
 import contacts.javafx.fxb.FXPersonne;
 import contacts.javafx.fxb.FXRubrique;
+import contacts.javafx.fxb.FXTarif;
 import contacts.javafx.fxb.FXTelephone;
 import contacts.javafx.fxb.FXZone;
 import javafx.collections.FXCollections;
@@ -86,6 +88,12 @@ public interface IMapperDtoFX {
 	FXRubrique map( DtoRubrique source );
 
 	DtoRubrique map( FXRubrique source );
+
+	FXTarif map( DtoTarif source );
+
+	FXTarif update( FXTarif source, @MappingTarget FXTarif cible);
+
+	DtoTarif map( FXTarif source);
 
     public static class FactoryObsservableList {
 

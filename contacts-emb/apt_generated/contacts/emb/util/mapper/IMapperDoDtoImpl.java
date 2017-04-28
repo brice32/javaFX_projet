@@ -6,6 +6,7 @@ import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoRubrique;
+import contacts.commun.dto.DtoTarif;
 import contacts.commun.dto.DtoTelephone;
 import contacts.commun.dto.DtoZone;
 import contacts.emb.dom.Annonceur;
@@ -14,6 +15,7 @@ import contacts.emb.dom.Compte;
 import contacts.emb.dom.Mouvement;
 import contacts.emb.dom.Personne;
 import contacts.emb.dom.Rubrique;
+import contacts.emb.dom.Tarif;
 import contacts.emb.dom.Telephone;
 import contacts.emb.dom.Zone;
 import java.util.ArrayList;
@@ -22,8 +24,8 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-04-28T12:19:35+0200",
-    comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
+    date = "2017-04-28T23:23:59+0200",
+    comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_131 (Oracle Corporation)"
 )
 public class IMapperDoDtoImpl implements IMapperDoDto {
 
@@ -309,6 +311,40 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
         dtoTelephone_.setNumero( source.getNumero() );
 
         return dtoTelephone_;
+    }
+
+    @Override
+    public Tarif map(DtoTarif source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Tarif tarif = new Tarif();
+
+        tarif.setDate( source.getDate() );
+        tarif.setId( source.getId() );
+        tarif.setTarifConference( source.getTarifConference() );
+        tarif.setTarifRelief( source.getTarifRelief() );
+        tarif.setTarifStage( source.getTarifStage() );
+
+        return tarif;
+    }
+
+    @Override
+    public DtoTarif map(Tarif source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoTarif dtoTarif = new DtoTarif();
+
+        dtoTarif.setDate( source.getDate() );
+        dtoTarif.setId( source.getId() );
+        dtoTarif.setTarifConference( source.getTarifConference() );
+        dtoTarif.setTarifRelief( source.getTarifRelief() );
+        dtoTarif.setTarifStage( source.getTarifStage() );
+
+        return dtoTarif;
     }
 
     protected List<Telephone> dtoTelephoneListToTelephoneList(List<DtoTelephone> list) {

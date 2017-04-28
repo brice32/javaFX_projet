@@ -12,6 +12,7 @@ import contacts.commun.dto.DtoCompte;
 import contacts.commun.dto.DtoMouvement;
 import contacts.commun.dto.DtoPersonne;
 import contacts.commun.dto.DtoRubrique;
+import contacts.commun.dto.DtoTarif;
 import contacts.commun.dto.DtoTelephone;
 import contacts.commun.dto.DtoZone;
 import contacts.emb.dom.Annonceur;
@@ -20,6 +21,7 @@ import contacts.emb.dom.Compte;
 import contacts.emb.dom.Mouvement;
 import contacts.emb.dom.Personne;
 import contacts.emb.dom.Rubrique;
+import contacts.emb.dom.Tarif;
 import contacts.emb.dom.Telephone;
 import contacts.emb.dom.Zone;
 
@@ -65,6 +67,10 @@ public interface IMapperDoDto {
 
 
 	DtoTelephone map( Telephone source );
+
+	Tarif map( DtoTarif source );
+
+	DtoTarif map( Tarif source );
 
 	@AfterMapping
 	default void ajouterRefPersonne( @MappingTarget Personne personne ) {
