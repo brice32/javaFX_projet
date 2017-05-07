@@ -43,6 +43,9 @@ public class ControllerAnnonceurForm implements IController {
 	@FXML
 	private TextField textFieldSiteWeb;
 
+	@FXML
+	private Button buttonRetour;
+
 //	@FXML
 //	private Button    buttonAnnuler;
 //
@@ -68,6 +71,11 @@ public class ControllerAnnonceurForm implements IController {
 		} catch (Exception e) {
 			managerGui.afficherErreur(e);
 		}
+	}
+
+	@FXML
+	private void doRetour(){
+		managerGui.showView(EnumView.AnnonceurListe);
 	}
 
 	@Override

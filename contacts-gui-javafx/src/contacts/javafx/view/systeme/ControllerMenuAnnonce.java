@@ -38,6 +38,8 @@ public class ControllerMenuAnnonce implements IController {
     private Button      buttonListeAnnonce;
     @FXML
     private Button      buttonListeAnnonceur;
+    @FXML
+	private Button      buttonRetour;
 
 	@Override
 	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
@@ -71,5 +73,10 @@ public class ControllerMenuAnnonce implements IController {
 	@FXML
 	private void doListAnnonceur(){
 		managerGui.showView(EnumView.AnnonceurListe);
+	}
+
+	@FXML
+	private void doRetour(){
+		managerGui.showView(EnumView.Info);
 	}
 }

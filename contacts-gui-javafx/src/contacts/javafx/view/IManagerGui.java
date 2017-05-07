@@ -24,4 +24,6 @@ public interface IManagerGui {
 
 	boolean demanderConfirmation(String message);
 
+	void showNewWindow(EnumView view);
+
 }

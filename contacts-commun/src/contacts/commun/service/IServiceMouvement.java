@@ -19,4 +19,8 @@ public interface IServiceMouvement {
 
 	List<DtoMouvement> listerTout() throws ExceptionAppli;
 
+	DtoMouvement retrouverIdannonceur(int idAnnonceur) throws ExceptionAppli;
+
+	List<DtoMouvement> retouverListe(int idAnnonceur) throws ExceptionAppli;
+
 }

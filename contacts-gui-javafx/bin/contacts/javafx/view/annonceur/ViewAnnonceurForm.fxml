@@ -41,5 +41,6 @@
             </Pane>
          </children>
       </FlowPane>
+      <Button layoutX="22.0" layoutY="22.0" mnemonicParsing="false" onAction="#doRetour" text="Retour" />
    </children>
 </AnchorPane>

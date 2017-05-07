@@ -15,11 +15,11 @@ public class ControllerRubriqueForm implements IController{
 	private TextField	textFieldId;
 	@FXML
 	private TextField	textFieldNom;
-	
+
 
 	IModelRubrique modelRubrique;
 
-	
+
 	private IManagerGui managerGui;
 
 //	@FXML
@@ -51,9 +51,12 @@ public class ControllerRubriqueForm implements IController{
 
 	}
 
-	
+	@FXML
+	private void doRetour(){
+		managerGui.showView( EnumView.RubriqueListe );
+	}
 
-	
+
 	@Override
 	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
 		// TODO Auto-generated method stub
@@ -63,12 +66,12 @@ public class ControllerRubriqueForm implements IController{
 		FXRubrique rubriqueVue = modelRubrique.getRubriqueVue();
 		textFieldId.textProperty().bind( Bindings.convert( rubriqueVue.idProperty() ) );
 		textFieldNom.textProperty().bindBidirectional( rubriqueVue.nomProperty() );
-		
-		
+
+
 	}
 
-	
-	
-	
+
+
+
 
 }

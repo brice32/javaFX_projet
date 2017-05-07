@@ -18,4 +18,8 @@ public interface IDaoMouvement {
 
 	List<Mouvement> listerTout();
 
+	Mouvement retouverDerniereMouvement(int idAnnonceur);
+
+	List<Mouvement> retouverListe(int idAnnonceur);
+
 }

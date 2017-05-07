@@ -2,8 +2,11 @@ package contacts.javafx.view.annonceur;
 
 import contacts.commun.util.ExceptionAppli;
 import contacts.javafx.fxb.FXAnnonceur;
+import contacts.javafx.fxb.FXMouvement;
 import contacts.javafx.fxb.FXPersonne;
+import contacts.javafx.model.EnumModeVue;
 import contacts.javafx.model.IModelAnnonceur;
+import contacts.javafx.model.IModelMouvement;
 import contacts.javafx.model.IModelPersonne;
 import contacts.javafx.view.EnumView;
 import contacts.javafx.view.IController;
@@ -56,19 +59,39 @@ public class ControllerAnnonceurListe implements IController {
 	private Label 	LabelSiteWeb;
 
 	@FXML
+	private Label 	LabelSolde;
+
+	@FXML
 	private Button buttonModifier;
 
 	@FXML
 	private Button buttonSupprimer;
 
+	@FXML
+	private Button buttonMouvement;
+
+	@FXML
+	private Button buttonListeMouvement;
+
+	@FXML
+	private Button buttonRetour;
+
+	@FXML
+	private Button buttonRetourMenuAnnonceur;
+
 	private IManagerGui managerGui;
 
 	private IModelAnnonceur modelAnnonceur;
+
+	private IModelMouvement modelMouvement;
+
+	private FXMouvement 	fxmouvement;
 
 	@FXML
 	private void doActualiser() {
 		try {
 			modelAnnonceur.actualiserListe();
+			LabelSolde.setText("");
 			tableViewAnnonceur.getSelectionModel().clearSelection();
 		} catch (Exception e) {
 			managerGui.afficherErreur(e);
@@ -99,6 +122,30 @@ public class ControllerAnnonceurListe implements IController {
 		}
 	}
 
+	@FXML
+	private void doMouvement(){
+		modelMouvement.preparerAnnonceur(tableViewAnnonceur.getSelectionModel().getSelectedItem());
+		managerGui.showView( EnumView.Mouvement );
+	}
+
+	@FXML
+	private void doListeMouvement() throws ExceptionAppli{
+		modelMouvement.preparerListe(tableViewAnnonceur.getSelectionModel().getSelectedItem());
+		managerGui.showNewWindow( EnumView.AnnonceurMouvementListe );
+	}
+
+	@FXML
+	private void doRetour(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.Info);
+	}
+
+	@FXML
+	private void doRetourMenuAnnonceur(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.MenuAnnonce);
+	}
+
 	@Override
 	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
 		// TODO Auto-generated method stub
@@ -112,9 +159,11 @@ public class ControllerAnnonceurListe implements IController {
 		LabelLieuCp.setText("");
 		LabelLieuVille.setText("");
 		LabelSiteWeb.setText("");
+		LabelSolde.setText("");
 
 		this.managerGui = managerGui;
 		modelAnnonceur = managerGui.getModel(IModelAnnonceur.class);
+		modelMouvement = managerGui.getModel(IModelMouvement.class);
 
 		tableViewAnnonceur.setItems(modelAnnonceur.getAnnonceurs());
 		nomColumn.setCellValueFactory(a -> a.getValue().nomProperty());
@@ -134,8 +183,18 @@ public class ControllerAnnonceurListe implements IController {
 				LabelLieuCp.setText(annonceur.getLieuCp());
 				LabelLieuVille.setText(annonceur.getLieuVille());
 				LabelSiteWeb.setText(annonceur.getSiteWeb());
+				try {
+					fxmouvement=modelMouvement.getMouvementIdAnnonceur(annonceur.getId());
+				} catch (ExceptionAppli e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+//					managerGui.afficherErreur(e);
+				}
+				LabelSolde.setText(Float.toString(fxmouvement.getSolde()));
 				buttonModifier.setDisable(false);
 				buttonSupprimer.setDisable(false);
+				buttonMouvement.setDisable(false);
+				buttonListeMouvement.setDisable(false);
 			}
 			else{
 				LabelIdAnnonceur.setText("");
@@ -149,6 +208,8 @@ public class ControllerAnnonceurListe implements IController {
 				LabelSiteWeb.setText("");
 				buttonModifier.setDisable(true);
 				buttonSupprimer.setDisable(true);
+				buttonMouvement.setDisable(true);
+				buttonListeMouvement.setDisable(true);
 			}
 		});
 		}

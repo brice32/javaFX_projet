@@ -63,6 +63,7 @@ public class ControllerPrincipal implements IController  {
 
 	@FXML
 	public void doMenu(){
+		managerGui.reinit();
 		managerGui.showView( EnumView.Info );
 	}
 	// Initialisation du Controller

@@ -34,6 +34,8 @@ public class ControllerMenuConfiguration implements IController {
 	private Label labelModerateur;
 	@FXML
 	private Label labelSecretaire;
+	@FXML
+	private Button buttonRetour;
 
 	@Override
 	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
@@ -75,4 +77,8 @@ public class ControllerMenuConfiguration implements IController {
 		managerGui.showView(EnumView.ZoneListe);
 	}
 
+	@FXML
+	private void doRetour(){
+		managerGui.showView(EnumView.Info);
+	}
 }

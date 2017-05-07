@@ -5,6 +5,7 @@ import contacts.commun.util.Roles;
 import contacts.javafx.fxb.FXCompte;
 import contacts.javafx.model.IModelConnexion;
 import contacts.javafx.model.IModelInfo;
+import contacts.javafx.model.IModelMouvement;
 import contacts.javafx.view.EnumView;
 import contacts.javafx.view.IController;
 import contacts.javafx.view.IManagerGui;
@@ -41,6 +42,8 @@ public class ControllerInfo implements IController {
     private Button		buttonGestionUtilisateur;
     @FXML
     private Button      buttonGestionAnnonce;
+
+    private IModelMouvement modelMouvement;
 	// Injecteurs
 
 	@Override
@@ -51,6 +54,7 @@ public class ControllerInfo implements IController {
 
 		// Injection  de dépendances
 		IModelInfo modelInfo = managerGui.getModel( IModelInfo.class );
+		modelMouvement = managerGui.getModel( IModelMouvement.class );
 		this.managerGui = managerGui;
 		// Data binding
 		labelTitre.textProperty().bind( modelInfo.titreProperty() );
@@ -89,6 +93,7 @@ public class ControllerInfo implements IController {
 
 	@FXML
 	private void doMouvement(){
+		modelMouvement.preparerAjouter();
 		managerGui.showView(EnumView.Mouvement);
 	}
 }

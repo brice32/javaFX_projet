@@ -26,4 +26,16 @@ public interface IModelMouvement {
 
 	void mettreVueAnnonceur(FXAnnonceur selectedItem);
 
+	FXMouvement getMouvementIdAnnonceur(int idAnnonceur) throws ExceptionAppli;
+
+	void mettreVueSolde(float solde);
+
+	void preparerAnnonceur(FXAnnonceur annonceur);
+
+	FXAnnonceur getAnnonceur();
+
+	boolean modeModifier();
+
+	void preparerListe(FXAnnonceur fxannonceur) throws ExceptionAppli;
+
 }

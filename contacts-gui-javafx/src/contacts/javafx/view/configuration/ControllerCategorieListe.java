@@ -75,6 +75,17 @@ public class ControllerCategorieListe implements IController {
 		}
 	}
 
+	@FXML
+	private void doRetour(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.Info);
+	}
+
+	@FXML
+	private void doRetourMenuConfiguration(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.MenuConfiguration);
+	}
 
 	// Gestion des évènements
 

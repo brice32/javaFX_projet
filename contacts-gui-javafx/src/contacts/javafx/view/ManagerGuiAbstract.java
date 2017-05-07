@@ -24,33 +24,30 @@ import javafx.scene.image.Image;
 import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
-public abstract class ManagerGuiAbstract implements IManagerGui  {
-
+public abstract class ManagerGuiAbstract implements IManagerGui {
 
 	// Constants
-	private static final KeyCodeCombination KCC_ENTER = new KeyCodeCombination( KeyCode.ENTER );
-	private static final KeyCodeCombination KCC_ESCAPE = new KeyCodeCombination( KeyCode.ESCAPE );
-
+	private static final KeyCodeCombination KCC_ENTER = new KeyCodeCombination(KeyCode.ENTER);
+	private static final KeyCodeCombination KCC_ESCAPE = new KeyCodeCombination(KeyCode.ESCAPE);
 
 	// Logger
-	private static final Logger logger = Logger.getLogger( ManagerGuiAbstract.class.getName() );
-
+	private static final Logger logger = Logger.getLogger(ManagerGuiAbstract.class.getName());
 
 	// Champs
 
-	private final Set<Object>		models = new HashSet<>();
+	private final Set<Object> models = new HashSet<>();
 
-	private Stage					stage;
-	private Scene					scene;
-    private BorderPane				panePrincipal;
-	private EnumView				viewPrecedente;
-
+	private Stage stage;
+	private Scene scene;
+	private BorderPane panePrincipal;
+	private EnumView viewPrecedente;
 
 	// Initialisations
 
@@ -59,45 +56,44 @@ public abstract class ManagerGuiAbstract implements IManagerGui  {
 		ApplicationJavaFX.launch(this);
 	}
 
+	private void start(Stage stage) throws Exception {
 
-	private void start( Stage stage ) throws Exception {
+		// Configure la scene
+		String path = "systeme/PanePrincipal.fxml";
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+		panePrincipal = loader.load();
+		IController controller = loader.getController();
+		controller.setManagerGui(this);
+		scene = new Scene(panePrincipal);
 
-			// Configure la scene
-			String path ="systeme/PanePrincipal.fxml" ;
-			FXMLLoader loader = new FXMLLoader(getClass().getResource( path ));
-			panePrincipal = loader.load();
-			IController controller = loader.getController();
-			controller.setManagerGui( this );
-			scene = new Scene( panePrincipal );
+		// Configure le stage
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.sizeToScene();
+		stage.setMinHeight(600);
+		stage.setMinWidth(800);
+		stage.setTitle("Gestion de contacts");
+		stage.getIcons().add(new Image(getClass().getResource("icone.png").toExternalForm()));
+		this.stage = stage;
 
-			// Configure le stage
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			stage.setScene(scene);
-			stage.sizeToScene();
-			stage.setMinHeight(600);
-			stage.setMinWidth(800);
-			stage.setTitle("Gestion de contacts");
-			stage.getIcons().add(new Image(getClass().getResource("icone.png").toExternalForm()));
-			this.stage = stage;
+		// Choisit la vue Ã  afficher
+		showView(EnumView.Connexion);
 
-			// Choisit la vue Ã  afficher
-			showView( EnumView.Connexion);
-
-			// Affiche le stage
-			stage.show();
+		// Affiche le stage
+		stage.show();
 	}
-
 
 	// Actions
 
 	@Override
-	public <T> T getModel( Class<T> type ) {
+	public <T> T getModel(Class<T> type) {
 		T model = getModelFromContext(type);
-		// Lors de la premiÃ¨re utilisation aprÃ¨s la connexion de l'utilisateur,
+		// Lors de la premiÃ¨re utilisation aprÃ¨s la connexion de
+		// l'utilisateur,
 		// appelle la mÃ©thode refresh() si elle existe
-		if ( ! models.contains(model) ) {
+		if (!models.contains(model)) {
 			try {
-				Method method = model.getClass().getMethod( "refresh" );
+				Method method = model.getClass().getMethod("refresh");
 				method.invoke(model);
 			} catch (RuntimeException e) {
 				throw e;
@@ -110,48 +106,47 @@ public abstract class ManagerGuiAbstract implements IManagerGui  {
 		return model;
 	}
 
-	protected abstract <T> T getModelFromContext( Class<T> type );
-
+	protected abstract <T> T getModelFromContext(Class<T> type);
 
 	// Affichage des vues
 
 	@Override
-	public void showView( EnumView view ) {
+	public void showView(EnumView view) {
 
 		try {
 
 			Pane pane = view.getPane();
 
-			if( pane == null ) {
+			if (pane == null) {
 
 				// Charge le panneau
-				FXMLLoader loader = new FXMLLoader(getClass().getResource( view.getPathn() ));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource(view.getPathn()));
 				pane = loader.load();
 
 				// Injecte les dÃ©pandances
 				IController controller = loader.getController();
-				controller.setManagerGui( this );
+				controller.setManagerGui(this);
 
 				// Enregistre le panneau dans la vue
-				view.setPane( pane );
+				view.setPane(pane);
 			}
 			// Affiche la vue
 			panePrincipal.setCenter(pane);
 
 			// GÃ¨re les boutons par dÃ©faut
-			if ( viewPrecedente != null ) {
-				if ( viewPrecedente.getRunnableEnter() == null ) {
-					viewPrecedente.setRunnableEnter(scene.getAccelerators().get( KCC_ENTER ) );
+			if (viewPrecedente != null) {
+				if (viewPrecedente.getRunnableEnter() == null) {
+					viewPrecedente.setRunnableEnter(scene.getAccelerators().get(KCC_ENTER));
 				}
-				if ( viewPrecedente.getRunnableEscape() == null ) {
-					viewPrecedente.setRunnableCancel( scene.getAccelerators().get( KCC_ESCAPE ) );
+				if (viewPrecedente.getRunnableEscape() == null) {
+					viewPrecedente.setRunnableCancel(scene.getAccelerators().get(KCC_ESCAPE));
 				}
 			}
-			if ( view.getRunnableEnter() != null ) {
-				scene.getAccelerators().put( KCC_ENTER, view.getRunnableEnter() );
+			if (view.getRunnableEnter() != null) {
+				scene.getAccelerators().put(KCC_ENTER, view.getRunnableEnter());
 			}
-			if ( view.getRunnableEscape() != null ) {
-				scene.getAccelerators().put( KCC_ESCAPE, view.getRunnableEscape() );
+			if (view.getRunnableEscape() != null) {
+				scene.getAccelerators().put(KCC_ESCAPE, view.getRunnableEscape());
 			}
 			viewPrecedente = view;
 
@@ -162,7 +157,7 @@ public abstract class ManagerGuiAbstract implements IManagerGui  {
 
 	@Override
 	public void reinit() {
-		for ( EnumView view : EnumView.values() ) {
+		for (EnumView view : EnumView.values()) {
 			view.setPane(null);
 		}
 		models.clear();
@@ -173,32 +168,29 @@ public abstract class ManagerGuiAbstract implements IManagerGui  {
 		stage.close();
 	}
 
-
 	// Actions gÃ©nÃ©rales
 
 	@Override
-	public void execTask( Runnable runnable ) {
+	public void execTask(Runnable runnable) {
 
-		final EventHandler<InputEvent> inputEventConsumer = (event) ->	event.consume() ;
+		final EventHandler<InputEvent> inputEventConsumer = (event) -> event.consume();
 		stage.addEventFilter(InputEvent.ANY, inputEventConsumer);
-		stage.getScene().setCursor( Cursor.WAIT );
+		stage.getScene().setCursor(Cursor.WAIT);
 
-		Timeline timeline = new Timeline(  new KeyFrame(
-	        Duration.ONE,
-            new EventHandler<ActionEvent>() {
-	            @Override
-	            public void handle(ActionEvent event) {
-					runnable.run();
-		            stage.removeEventFilter(InputEvent.ANY, inputEventConsumer);
-		            stage.getScene().setCursor(Cursor.DEFAULT);
-	              }
-	         }));
+		Timeline timeline = new Timeline(new KeyFrame(Duration.ONE, new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				runnable.run();
+				stage.removeEventFilter(InputEvent.ANY, inputEventConsumer);
+				stage.getScene().setCursor(Cursor.DEFAULT);
+			}
+		}));
 		timeline.play();
 
 	}
 
 	@Override
-	public void afficherMessage( String message ) {
+	public void afficherMessage(String message) {
 		final Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.initOwner(stage);
 		alert.setHeaderText(message);
@@ -206,56 +198,55 @@ public abstract class ManagerGuiAbstract implements IManagerGui  {
 	}
 
 	@Override
-	public boolean demanderConfirmation( String message ) {
+	public boolean demanderConfirmation(String message) {
 		final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.initOwner( stage );
-		alert.setHeaderText( message);
+		alert.initOwner(stage);
+		alert.setHeaderText(message);
 		final Optional<ButtonType> result = alert.showAndWait();
 		return result.get() == ButtonType.OK;
 	}
 
-
 	@Override
-	public void afficherErreur( Throwable exception ) {
-		afficherErreur( null, exception );
+	public void afficherErreur(Throwable exception) {
+		afficherErreur(null, exception);
 	}
 
 	@Override
-	public void afficherErreur( String message ) {
-		afficherErreur( message, null );
+	public void afficherErreur(String message) {
+		afficherErreur(message, null);
 	}
 
 	@Override
-	public void afficherErreur( String message, Throwable exception ) {
+	public void afficherErreur(String message, Throwable exception) {
 
 		String messageDefaut = null;
 
-		if ( exception != null ) {
+		if (exception != null) {
 
-			if ( exception instanceof ExceptionValidation ) {
+			if (exception instanceof ExceptionValidation) {
 				messageDefaut = exception.getMessage();
-			} else if ( exception instanceof ExceptionAutorisation ) {
+			} else if (exception instanceof ExceptionAutorisation) {
 				messageDefaut = "Action non autoriÃ©sÃ© !";
-				logger.log(Level.FINEST, exception.getMessage(), exception );
-			} else if ( exception.getClass().getName().equals( "javax.ejb.EJBAccessException") ) {
+				logger.log(Level.FINEST, exception.getMessage(), exception);
+			} else if (exception.getClass().getName().equals("javax.ejb.EJBAccessException")) {
 				messageDefaut = "EJB : Action non autoriÃ©sÃ© !";
-				logger.log(Level.FINEST, exception.getMessage(), exception );
-			} else if ( exception instanceof ExceptionAnomalie ) {
+				logger.log(Level.FINEST, exception.getMessage(), exception);
+			} else if (exception instanceof ExceptionAnomalie) {
 				messageDefaut = "Echec du traitement demandÃ©";
-				logger.log(Level.FINEST, exception.getMessage(), exception );
-			} else if ( exception.getClass().getName().equals( "javax.ejb.EJBException")
-					|| exception.getClass().getName().equals( "javax.ejb.EJBTransactionRolledbackException") ) {
+				logger.log(Level.FINEST, exception.getMessage(), exception);
+			} else if (exception.getClass().getName().equals("javax.ejb.EJBException")
+					|| exception.getClass().getName().equals("javax.ejb.EJBTransactionRolledbackException")) {
 				messageDefaut = "EJB : Echec du traitement demandÃ©";
-				logger.log(Level.FINEST, exception.getMessage(), exception );
-			} else if ( exception instanceof RuntimeException ) {
-				logger.log(Level.SEVERE, exception.getMessage(), exception );
+				logger.log(Level.FINEST, exception.getMessage(), exception);
+			} else if (exception instanceof RuntimeException) {
+				logger.log(Level.SEVERE, exception.getMessage(), exception);
 			} else {
 				messageDefaut = exception.getMessage();
-				logger.log(Level.SEVERE, exception.getMessage(), exception );
+				logger.log(Level.SEVERE, exception.getMessage(), exception);
 			}
 
-			if (message == null ) {
-				if ( messageDefaut == null ) {
+			if (message == null) {
+				if (messageDefaut == null) {
 					message = "Ecec du traitement demandé.";
 				} else {
 					message = messageDefaut;
@@ -265,19 +256,17 @@ public abstract class ManagerGuiAbstract implements IManagerGui  {
 
 		final Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.initOwner(stage);
-		alert.setHeaderText( message );
+		alert.setHeaderText(message);
 		alert.showAndWait();
 	}
 
-
 	// Classes auxiliaires
-
 
 	public static class ApplicationJavaFX extends Application {
 
-		private static ManagerGuiAbstract	managerGui;
+		private static ManagerGuiAbstract managerGui;
 
-		public static void launch( ManagerGuiAbstract managerGui ) {
+		public static void launch(ManagerGuiAbstract managerGui) {
 			ApplicationJavaFX.managerGui = managerGui;
 			launch();
 		}
@@ -288,9 +277,35 @@ public abstract class ManagerGuiAbstract implements IManagerGui  {
 		}
 	}
 
-
 	public static interface RunnableWithException {
 		void run() throws Exception;
 	}
 
+	@Override
+	public void showNewWindow(EnumView view){
+		try {
+	        // Load the fxml file and create a new stage for the popup dialog.
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(view.getPathn()));
+//	        loader.setLocation(MainApp.class.getResource("view/UtilisateurEditDialog.fxml"));
+	        AnchorPane pane = (AnchorPane) loader.load();
+
+	        // Set the person into the controller.
+	        IController controller = loader.getController();
+			controller.setManagerGui(this);
+
+	        // Create the dialog Stage.
+	        Stage dialogStage = new Stage();
+	        dialogStage.setTitle("Liste de Mouvement");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        Scene scene = new Scene(pane);
+	        dialogStage.setScene(scene);
+	        dialogStage.getIcons().add(new Image(getClass().getResource("icone.png").toExternalForm()));
+
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 }

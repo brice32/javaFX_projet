@@ -68,6 +68,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
+                  <Button layoutX="22.0" layoutY="22.0" mnemonicParsing="false" onAction="#doRetour" text="Retour" />
                </children>
             </AnchorPane>
         </items>

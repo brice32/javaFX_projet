@@ -18,6 +18,7 @@ public enum EnumView {
 	PersonneForm     ( "personne/ViewPersonneForm.fxml" ),
 	AnnonceurListe   ( "annonceur/ViewAnnonceurListe.fxml" ),
 	AnnonceurForm    ( "annonceur/ViewAnnonceurForm.fxml" ),
+	AnnonceurMouvementListe ( "annonceur/ViewAnnonceurMouvementListe.fxml" ),
 	CategorieListe   ( "configuration/ViewCategorieListe.fxml" ),
 	CategorieForm    ( "configuration/ViewCategorieForm.fxml" ),
 	Mouvement        ( "mouvement/ViewMouvement.fxml"),

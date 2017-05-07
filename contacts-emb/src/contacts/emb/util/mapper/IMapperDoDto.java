@@ -46,6 +46,8 @@ public interface IMapperDoDto {
 
 	DtoAnnonceur map( Annonceur source );
 
+	Annonceur update( Annonceur source,@MappingTarget Annonceur cible);
+
 	Categorie map (DtoCategorie source );
 
 	DtoCategorie map ( Categorie source );

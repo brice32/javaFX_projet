@@ -84,6 +84,18 @@ public class ControllerZoneListe implements IController{
 	}
 
 	@FXML
+	private void doRetour(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.Info);
+	}
+
+	@FXML
+	private void doRetourMenuConfiguration(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.MenuConfiguration);
+	}
+
+	@FXML
 	private void gererClic(MouseEvent event) {
 		if (event.getButton().equals(MouseButton.PRIMARY)) {
 			if (event.getClickCount() == 2) {

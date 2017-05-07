@@ -24,8 +24,8 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-05-03T02:16:33+0200",
-    comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_131 (Oracle Corporation)"
+    date = "2017-05-07T00:43:08+0200",
+    comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_121 (Oracle Corporation)"
 )
 public class IMapperDoDtoImpl implements IMapperDoDto {
 
@@ -37,17 +37,17 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Compte compte = new Compte();
 
-        compte.setId( source.getId() );
-        compte.setPseudo( source.getPseudo() );
-        compte.setMotDePasse( source.getMotDePasse() );
         compte.setEmail( source.getEmail() );
+        compte.setId( source.getId() );
+        compte.setMotDePasse( source.getMotDePasse() );
+        compte.setNom( source.getNom() );
+        compte.setPrenom( source.getPrenom() );
+        compte.setPseudo( source.getPseudo() );
         List<String> list = source.getRoles();
         if ( list != null ) {
             compte.setRoles(       new ArrayList<String>( list )
             );
         }
-        compte.setNom( source.getNom() );
-        compte.setPrenom( source.getPrenom() );
         compte.setTelephone( source.getTelephone() );
 
         return compte;
@@ -125,15 +125,15 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Annonceur annonceur = new Annonceur();
 
-        annonceur.setId( source.getId() );
-        annonceur.setNom( source.getNom() );
-        annonceur.setTelephone( source.getTelephone() );
         annonceur.setEmail( source.getEmail() );
-        annonceur.setLieuNom( source.getLieuNom() );
+        annonceur.setId( source.getId() );
         annonceur.setLieuAdresse( source.getLieuAdresse() );
         annonceur.setLieuCp( source.getLieuCp() );
+        annonceur.setLieuNom( source.getLieuNom() );
         annonceur.setLieuVille( source.getLieuVille() );
+        annonceur.setNom( source.getNom() );
         annonceur.setSiteWeb( source.getSiteWeb() );
+        annonceur.setTelephone( source.getTelephone() );
 
         return annonceur;
     }
@@ -157,6 +157,25 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
         dtoAnnonceur.setTelephone( source.getTelephone() );
 
         return dtoAnnonceur;
+    }
+
+    @Override
+    public Annonceur update(Annonceur source, Annonceur cible) {
+        if ( source == null ) {
+            return null;
+        }
+
+        cible.setEmail( source.getEmail() );
+        cible.setId( source.getId() );
+        cible.setLieuAdresse( source.getLieuAdresse() );
+        cible.setLieuCp( source.getLieuCp() );
+        cible.setLieuNom( source.getLieuNom() );
+        cible.setLieuVille( source.getLieuVille() );
+        cible.setNom( source.getNom() );
+        cible.setSiteWeb( source.getSiteWeb() );
+        cible.setTelephone( source.getTelephone() );
+
+        return cible;
     }
 
     @Override
@@ -195,14 +214,14 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Mouvement mouvement = new Mouvement();
 
+        mouvement.setAnnonceur( map( source.getAnnonceur() ) );
+        mouvement.setDate( source.getDate() );
+        mouvement.setDescription( source.getDescription() );
+        mouvement.setHeure( source.getHeure() );
         mouvement.setIdMouvement( source.getIdMouvement() );
+        mouvement.setLibelle( source.getLibelle() );
         mouvement.setMontant( source.getMontant() );
         mouvement.setSolde( source.getSolde() );
-        mouvement.setLibelle( source.getLibelle() );
-        mouvement.setDescription( source.getDescription() );
-        mouvement.setDate( source.getDate() );
-        mouvement.setHeure( source.getHeure() );
-        mouvement.setAnnonceur( map( source.getAnnonceur() ) );
 
         return mouvement;
     }
@@ -321,11 +340,11 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Tarif tarif = new Tarif();
 
-        tarif.setTarifConference( source.getTarifConference() );
-        tarif.setTarifStage( source.getTarifStage() );
-        tarif.setTarifRelief( source.getTarifRelief() );
         tarif.setDate( source.getDate() );
         tarif.setId( source.getId() );
+        tarif.setTarifConference( source.getTarifConference() );
+        tarif.setTarifRelief( source.getTarifRelief() );
+        tarif.setTarifStage( source.getTarifStage() );
 
         return tarif;
     }

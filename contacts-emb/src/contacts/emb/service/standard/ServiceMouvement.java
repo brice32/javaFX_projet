@@ -10,9 +10,11 @@ import contacts.commun.dto.DtoMouvement;
 import contacts.commun.service.IServiceMouvement;
 import contacts.commun.util.ExceptionAnomalie;
 import contacts.commun.util.ExceptionAppli;
+import contacts.commun.util.ExceptionValidation;
 import contacts.emb.dao.IDaoAnnonceur;
 import contacts.emb.dao.IDaoMouvement;
 import contacts.emb.dao.IManagerTransaction;
+import contacts.emb.dao.jdbc.DaoAnnonceur;
 import contacts.emb.dom.Annonceur;
 import contacts.emb.dom.Mouvement;
 import contacts.emb.util.mapper.IMapperDoDto;
@@ -29,6 +31,7 @@ public class ServiceMouvement implements IServiceMouvement {
 		private IManagerSecurite managerSecurite;
 
 		private IDaoMouvement daoMouvement;
+		private IDaoAnnonceur daoAnnonceur;
 		private IMapperDoDto mapper;
 		private IManagerTransaction managerTransaction;
 
@@ -50,12 +53,16 @@ public class ServiceMouvement implements IServiceMouvement {
 			this.daoMouvement = daoMouvement;
 		}
 
+		public void setDaoAnnonceur(IDaoAnnonceur daoAnnonceur) {
+			this.daoAnnonceur = daoAnnonceur;
+		}
 
 	@Override
 	public int inserer(DtoMouvement dtoMouvement) throws ExceptionAppli {
 		// TODO Auto-generated method stub
 		try {
 			managerSecurite.verifierAutorisationSecretaire();
+			verifierValiditeDonnees(dtoMouvement);
 
 			managerTransaction.begin();
 			try {
@@ -147,4 +154,61 @@ public class ServiceMouvement implements IServiceMouvement {
 		}
 	}
 
+	@Override
+	public DtoMouvement retrouverIdannonceur(int idAnnonceur) throws ExceptionAppli{
+		try {
+			return mapper.map(daoMouvement.retouverDerniereMouvement(idAnnonceur));
+		} catch (RuntimeException e) {
+			logger.log(Level.SEVERE, e.getMessage(), e);
+			throw new ExceptionAnomalie(e);
+		}
+	}
+
+	@Override
+	public List<DtoMouvement> retouverListe(int idAnnonceur) throws ExceptionAppli{
+		try{
+			DtoMouvement dtomouvement;
+			Annonceur annonceur = daoAnnonceur.retrouver(idAnnonceur);
+			List<DtoMouvement> mouvements = new ArrayList<>();
+			for( Mouvement mouvement : daoMouvement.retouverListe(idAnnonceur)){
+//				System.out.print(daoAnnonceur.retrouver(idAnnonceur).getNom());
+//				mapper.update(daoAnnonceur.retrouver(idAnnonceur), mouvement.getAnnonceur());
+//				mouvement.setAnnonceur(daoAnnonceur.retrouver(idAnnonceur));
+				dtomouvement=mapper.map(mouvement);
+				dtomouvement.setAnnonceur(mapper.map(mouvement.getAnnonceur()));
+				mouvements.add(dtomouvement);
+			}
+			return mouvements;
+		} catch (RuntimeException e){
+			logger.log( Level.SEVERE, e.getMessage(), e );
+			throw new ExceptionAnomalie(e);
+		}
+	}
+
+	// Méthodes auxiliaires
+	private void verifierValiditeDonnees( DtoMouvement dtomouvement ) throws ExceptionAppli{
+		StringBuilder message = new StringBuilder();
+
+		if (dtomouvement.getMontant() == 0){
+			message.append( "\nLe montant est absent." );
+		}else if( dtomouvement.getMontant()+dtomouvement.getSolde() < 0 ){
+			message.append("\nSolde du compte est insuffisante("+(dtomouvement.getMontant() + dtomouvement.getSolde())+"euros).");
+		}
+
+		if ( dtomouvement.getLibelle() == null || dtomouvement.getLibelle().isEmpty() ) {
+			message.append( "\nLe libelle est absent." );
+		}else if(dtomouvement.getLibelle().length() > 100){
+			message.append("\nLe libelle est trop long.");
+		}
+
+		if( dtomouvement.getDescription() == null || dtomouvement.getDescription().isEmpty()){
+
+		}else if(dtomouvement.getDescription().length() > 254){
+			message.append("\nLe description est trop long.("+dtomouvement.getDescription().length()+" > 254)");
+		}
+
+		if ( message.length() > 0 ) {
+			throw new ExceptionValidation( message.toString().substring(1) );
+		}
+	}
 }

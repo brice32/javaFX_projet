@@ -91,6 +91,18 @@ public class ControllerRubriqueListe implements IController {
 		}
 	}
 
+	@FXML
+	private void doRetour(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.Info);
+	}
+
+	@FXML
+	private void doRetourMenuConfiguration(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.MenuConfiguration);
+	}
+
 	@Override
 	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
 		this.managerGui = managerGui;

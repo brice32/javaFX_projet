@@ -60,7 +60,10 @@ public class ControllerCategorieForm implements IController {
 		}
 	}
 
-
+	@FXML
+	private void doRetour(){
+		managerGui.showView(EnumView.CategorieListe);
+	}
 
 	// Initialisation du Controller
 

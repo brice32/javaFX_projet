@@ -73,6 +73,11 @@ public class ControllerCompteListe implements IController {
 		}
 	}
 
+	@FXML
+	private void doRetour(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.Info);
+	}
 
 	// Gestion des évènements
 
