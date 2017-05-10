@@ -1,5 +1,6 @@
 package contacts.javafx.util.mapper;
 
+import contacts.commun.dto.DtoAnnonce;
 import contacts.commun.dto.DtoAnnonceur;
 import contacts.commun.dto.DtoCategorie;
 import contacts.commun.dto.DtoCompte;
@@ -9,6 +10,7 @@ import contacts.commun.dto.DtoRubrique;
 import contacts.commun.dto.DtoTarif;
 import contacts.commun.dto.DtoTelephone;
 import contacts.commun.dto.DtoZone;
+import contacts.javafx.fxb.FXAnnonce;
 import contacts.javafx.fxb.FXAnnonceur;
 import contacts.javafx.fxb.FXCategorie;
 import contacts.javafx.fxb.FXCompte;
@@ -26,7 +28,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-05-08T19:02:32+0200",
+    date = "2017-05-10T08:39:56+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_131 (Oracle Corporation)"
 )
 public class IMapperDtoFXImpl implements IMapperDtoFX {
@@ -39,12 +41,12 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        target.setId( source.getId() );
-        target.setPseudo( source.getPseudo() );
-        target.setMotDePasse( source.getMotDePasse() );
         target.setEmail( source.getEmail() );
+        target.setId( source.getId() );
+        target.setMotDePasse( source.getMotDePasse() );
         target.setNom( source.getNom() );
         target.setPrenom( source.getPrenom() );
+        target.setPseudo( source.getPseudo() );
         target.setTelephone( source.getTelephone() );
         if ( target.getRoles() != null ) {
             target.getRoles().clear();
@@ -65,12 +67,12 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXCompte fXCompte = new FXCompte();
 
-        fXCompte.setId( source.getId() );
-        fXCompte.setPseudo( source.getPseudo() );
-        fXCompte.setMotDePasse( source.getMotDePasse() );
         fXCompte.setEmail( source.getEmail() );
+        fXCompte.setId( source.getId() );
+        fXCompte.setMotDePasse( source.getMotDePasse() );
         fXCompte.setNom( source.getNom() );
         fXCompte.setPrenom( source.getPrenom() );
+        fXCompte.setPseudo( source.getPseudo() );
         fXCompte.setTelephone( source.getTelephone() );
         if ( fXCompte.getRoles() != null ) {
             ObservableList<String> observableList = stringListToStringObservableList( source.getRoles() );
@@ -154,9 +156,9 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXTelephone fXTelephone_ = new FXTelephone();
 
+        fXTelephone_.setId( source.getId() );
         fXTelephone_.setLibelle( source.getLibelle() );
         fXTelephone_.setNumero( source.getNumero() );
-        fXTelephone_.setId( source.getId() );
 
         return fXTelephone_;
     }
@@ -184,15 +186,15 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXAnnonceur fXAnnonceur = new FXAnnonceur();
 
-        fXAnnonceur.setId( source.getId() );
-        fXAnnonceur.setNom( source.getNom() );
-        fXAnnonceur.setTelephone( source.getTelephone() );
         fXAnnonceur.setEmail( source.getEmail() );
-        fXAnnonceur.setLieuNom( source.getLieuNom() );
+        fXAnnonceur.setId( source.getId() );
         fXAnnonceur.setLieuAdresse( source.getLieuAdresse() );
         fXAnnonceur.setLieuCp( source.getLieuCp() );
+        fXAnnonceur.setLieuNom( source.getLieuNom() );
         fXAnnonceur.setLieuVille( source.getLieuVille() );
+        fXAnnonceur.setNom( source.getNom() );
         fXAnnonceur.setSiteWeb( source.getSiteWeb() );
+        fXAnnonceur.setTelephone( source.getTelephone() );
 
         return fXAnnonceur;
     }
@@ -254,13 +256,13 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXMouvement fXMouvement = new FXMouvement();
 
-        fXMouvement.setIdMouvement( source.getIdMouvement() );
-        fXMouvement.setMontant( source.getMontant() );
         fXMouvement.setDate( source.getDate() );
-        fXMouvement.setHeure( source.getHeure() );
-        fXMouvement.setSolde( source.getSolde() );
-        fXMouvement.setLibelle( source.getLibelle() );
         fXMouvement.setDescription( source.getDescription() );
+        fXMouvement.setHeure( source.getHeure() );
+        fXMouvement.setIdMouvement( source.getIdMouvement() );
+        fXMouvement.setLibelle( source.getLibelle() );
+        fXMouvement.setMontant( source.getMontant() );
+        fXMouvement.setSolde( source.getSolde() );
 
         return fXMouvement;
     }
@@ -291,15 +293,15 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        cible.setId( source.getId() );
-        cible.setNom( source.getNom() );
-        cible.setTelephone( source.getTelephone() );
         cible.setEmail( source.getEmail() );
-        cible.setLieuNom( source.getLieuNom() );
+        cible.setId( source.getId() );
         cible.setLieuAdresse( source.getLieuAdresse() );
         cible.setLieuCp( source.getLieuCp() );
+        cible.setLieuNom( source.getLieuNom() );
         cible.setLieuVille( source.getLieuVille() );
+        cible.setNom( source.getNom() );
         cible.setSiteWeb( source.getSiteWeb() );
+        cible.setTelephone( source.getTelephone() );
 
         return cible;
     }
@@ -342,13 +344,13 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        cible.setIdMouvement( source.getIdMouvement() );
-        cible.setMontant( source.getMontant() );
         cible.setDate( source.getDate() );
-        cible.setHeure( source.getHeure() );
-        cible.setSolde( source.getSolde() );
-        cible.setLibelle( source.getLibelle() );
         cible.setDescription( source.getDescription() );
+        cible.setHeure( source.getHeure() );
+        cible.setIdMouvement( source.getIdMouvement() );
+        cible.setLibelle( source.getLibelle() );
+        cible.setMontant( source.getMontant() );
+        cible.setSolde( source.getSolde() );
 
         return cible;
     }
@@ -361,9 +363,9 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXTelephone fXTelephone = new FXTelephone();
 
+        fXTelephone.setId( source.getId() );
         fXTelephone.setLibelle( source.getLibelle() );
         fXTelephone.setNumero( source.getNumero() );
-        fXTelephone.setId( source.getId() );
 
         return fXTelephone;
     }
@@ -390,15 +392,15 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXAnnonceur fXAnnonceur = new FXAnnonceur();
 
-        fXAnnonceur.setId( source.getId() );
-        fXAnnonceur.setNom( source.getNom() );
-        fXAnnonceur.setTelephone( source.getTelephone() );
         fXAnnonceur.setEmail( source.getEmail() );
-        fXAnnonceur.setLieuNom( source.getLieuNom() );
+        fXAnnonceur.setId( source.getId() );
         fXAnnonceur.setLieuAdresse( source.getLieuAdresse() );
         fXAnnonceur.setLieuCp( source.getLieuCp() );
+        fXAnnonceur.setLieuNom( source.getLieuNom() );
         fXAnnonceur.setLieuVille( source.getLieuVille() );
+        fXAnnonceur.setNom( source.getNom() );
         fXAnnonceur.setSiteWeb( source.getSiteWeb() );
+        fXAnnonceur.setTelephone( source.getTelephone() );
 
         return fXAnnonceur;
     }
@@ -423,8 +425,8 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        cible.setNom( source.getNom() );
         cible.setId( source.getId() );
+        cible.setNom( source.getNom() );
 
         return cible;
     }
@@ -437,8 +439,8 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXZone fXZone = new FXZone();
 
-        fXZone.setNom( source.getNom() );
         fXZone.setId( source.getId() );
+        fXZone.setNom( source.getNom() );
 
         return fXZone;
     }
@@ -463,8 +465,8 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
             return null;
         }
 
-        cible.setNom( source.getNom() );
         cible.setId( source.getId() );
+        cible.setNom( source.getNom() );
 
         return cible;
     }
@@ -477,8 +479,8 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
 
         FXRubrique fXRubrique = new FXRubrique();
 
-        fXRubrique.setNom( source.getNom() );
         fXRubrique.setId( source.getId() );
+        fXRubrique.setNom( source.getNom() );
 
         return fXRubrique;
     }
@@ -542,6 +544,96 @@ public class IMapperDtoFXImpl implements IMapperDtoFX {
         dtoTarif.setTarifStage( source.gettarifStage() );
 
         return dtoTarif;
+    }
+
+    @Override
+    public FXAnnonce map(DtoAnnonce source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        FXAnnonce fXAnnonce = new FXAnnonce();
+
+        fXAnnonce.setAnimateurNom( source.getAnimateurNom() );
+        fXAnnonce.setAnimateurQualification( source.getAnimateurQualification() );
+        fXAnnonce.setDateDebut( source.getDateDebut() );
+        fXAnnonce.setDateFin( source.getDateFin() );
+        fXAnnonce.setDescription( source.getDescription() );
+        fXAnnonce.setHeureDebut( source.getHeureDebut() );
+        fXAnnonce.setHeureFin( source.getHeureFin() );
+        fXAnnonce.setIdAnnonce( source.getIdAnnonce() );
+        fXAnnonce.setLieuAdresse( source.getLieuAdresse() );
+        fXAnnonce.setLieuCp( source.getLieuCp() );
+        fXAnnonce.setLieuNom( source.getLieuNom() );
+        fXAnnonce.setLieuVille( source.getLieuVille() );
+        fXAnnonce.setOrganisateurEmail( source.getOrganisateurEmail() );
+        fXAnnonce.setOrganisateurNom( source.getOrganisateurNom() );
+        fXAnnonce.setOrganisateurSiteWeb( source.getOrganisateurSiteWeb() );
+        fXAnnonce.setOrganisateurTelephone( source.getOrganisateurTelephone() );
+        if ( source.getStatute() != null ) {
+            fXAnnonce.setStatute( source.getStatute().name() );
+        }
+        fXAnnonce.setTitre( source.getTitre() );
+
+        return fXAnnonce;
+    }
+
+    @Override
+    public DtoAnnonce map(FXAnnonce source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoAnnonce dtoAnnonce = new DtoAnnonce();
+
+        dtoAnnonce.setAnimateurNom( source.getAnimateurNom() );
+        dtoAnnonce.setAnimateurQualification( source.getAnimateurQualification() );
+        dtoAnnonce.setDateDebut( source.getDateDebut() );
+        dtoAnnonce.setDateFin( source.getDateFin() );
+        dtoAnnonce.setDescription( source.getDescription() );
+        dtoAnnonce.setHeureDebut( source.getHeureDebut() );
+        dtoAnnonce.setHeureFin( source.getHeureFin() );
+        dtoAnnonce.setIdAnnonce( source.getIdAnnonce() );
+        dtoAnnonce.setLieuAdresse( source.getLieuAdresse() );
+        dtoAnnonce.setLieuCp( source.getLieuCp() );
+        dtoAnnonce.setLieuNom( source.getLieuNom() );
+        dtoAnnonce.setLieuVille( source.getLieuVille() );
+        dtoAnnonce.setOrganisateurEmail( source.getOrganisateurEmail() );
+        dtoAnnonce.setOrganisateurNom( source.getOrganisateurNom() );
+        dtoAnnonce.setOrganisateurSiteWeb( source.getOrganisateurSiteWeb() );
+        dtoAnnonce.setOrganisateurTelephone( source.getOrganisateurTelephone() );
+        dtoAnnonce.setStatute( source.getStatute() );
+        dtoAnnonce.setTitre( source.getTitre() );
+
+        return dtoAnnonce;
+    }
+
+    @Override
+    public FXAnnonce update(FXAnnonce source, FXAnnonce cible) {
+        if ( source == null ) {
+            return null;
+        }
+
+        cible.setAnimateurNom( source.getAnimateurNom() );
+        cible.setAnimateurQualification( source.getAnimateurQualification() );
+        cible.setDateDebut( source.getDateDebut() );
+        cible.setDateFin( source.getDateFin() );
+        cible.setDescription( source.getDescription() );
+        cible.setHeureDebut( source.getHeureDebut() );
+        cible.setHeureFin( source.getHeureFin() );
+        cible.setIdAnnonce( source.getIdAnnonce() );
+        cible.setLieuAdresse( source.getLieuAdresse() );
+        cible.setLieuCp( source.getLieuCp() );
+        cible.setLieuNom( source.getLieuNom() );
+        cible.setLieuVille( source.getLieuVille() );
+        cible.setOrganisateurEmail( source.getOrganisateurEmail() );
+        cible.setOrganisateurNom( source.getOrganisateurNom() );
+        cible.setOrganisateurSiteWeb( source.getOrganisateurSiteWeb() );
+        cible.setOrganisateurTelephone( source.getOrganisateurTelephone() );
+        cible.setStatute( source.getStatute() );
+        cible.setTitre( source.getTitre() );
+
+        return cible;
     }
 
     protected ObservableList<String> stringListToStringObservableList(List<String> list) {

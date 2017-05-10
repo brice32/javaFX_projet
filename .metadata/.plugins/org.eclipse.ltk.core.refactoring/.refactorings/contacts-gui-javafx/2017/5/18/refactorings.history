@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;contacts.javafx.annonce&apos; to &apos;contacts.javafx.view.annonce&apos;&#x0D;&#x0A;- Original project: &apos;contacts-gui-javafx&apos;&#x0D;&#x0A;- Original element: &apos;contacts-gui-javafx/src/contacts.javafx.annonce&apos;&#x0D;&#x0A;- Renamed element: &apos;contacts-gui-javafx/src/contacts.javafx.view.annonce&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;contacts.javafx.annonce&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;contacts.javafx.annonce" name="contacts.javafx.view.annonce" qualified="false" references="true" stamp="1494189844950" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,7 @@
+package contacts.commun.dto;
+
+import java.io.Serializable;
+
+public class DtoAnnonce implements Serializable {
+
+}

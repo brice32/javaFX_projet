@@ -1,0 +1,42 @@
+package contacts.javafx.view.annonce;
+
+import contacts.commun.util.ExceptionAppli;
+import contacts.javafx.fxb.FXAnnonce;
+import contacts.javafx.model.IModelAnnonce;
+import contacts.javafx.view.EnumView;
+import contacts.javafx.view.IController;
+import contacts.javafx.view.IManagerGui;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
+
+public class ControllerAnnonceListe implements IController {
+
+	private IManagerGui managerGui;
+
+	private IModelAnnonce modelAnnonce;
+
+	@FXML
+	private TableView<FXAnnonce> tableViewAnnonce;
+
+	@Override
+	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
+		// TODO Auto-generated method stub
+		this.managerGui=managerGui;
+		modelAnnonce = managerGui.getModel(IModelAnnonce.class);
+		tableViewAnnonce.setItems(modelAnnonce.getAnnonces());
+		FXAnnonce annonce = modelAnnonce.getAnnonces().get(0);
+		System.out.println(annonce.getDateFin().toString());
+	}
+
+	@FXML
+	private void doRetour(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.Info);
+	}
+
+	@FXML
+	private void doRetourMenuAnnonce(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.MenuAnnonce);
+	}
+}

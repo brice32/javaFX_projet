@@ -1,0 +1,7 @@
+package contacts.emb.service.standard;
+
+import contacts.commun.service.IServiceAnnonce;
+
+public class ServiceAnnonce implements IServiceAnnonce {
+
+}

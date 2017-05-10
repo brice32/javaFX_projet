@@ -1,0 +1,8 @@
+package contacts.emb.dom;
+
+public class Annonce {
+	private int          	idAnnonce;
+	private String 			titre;
+	private String 			description;
+	
+}

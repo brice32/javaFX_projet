@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy/>
+<typeInfoHistroy>
+<typeInfo handle="=contacts-commun/src&lt;contacts.commun.service{IServiceAnnonceur.java[IServiceAnnonceur" modifiers="513" timestamp="1490960066314"/>
+<typeInfo handle="=contacts-gui-javafx/src&lt;contacts.javafx.view{IController.java[IController" modifiers="513" timestamp="1490574116631"/>
+<typeInfo handle="=contacts-commun/C:\/Program Files\/Java\/jdk1.8.0_121\/jre\/lib\/rt.jar&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1490117808530"/>
+<typeInfo handle="=contacts-commun/src&lt;contacts.commun.service{IServiceAnnonce.java[IServiceAnnonce" modifiers="513" timestamp="1494368273400"/>
+<typeInfo handle="=contacts-gui-javafx/src&lt;contacts.javafx.model{IModelAnnonce.java[IModelAnnonce" modifiers="513" timestamp="1494393327153"/>
+</typeInfoHistroy>

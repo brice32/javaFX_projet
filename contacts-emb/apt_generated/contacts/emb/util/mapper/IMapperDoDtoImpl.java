@@ -1,5 +1,6 @@
 package contacts.emb.util.mapper;
 
+import contacts.commun.dto.DtoAnnonce;
 import contacts.commun.dto.DtoAnnonceur;
 import contacts.commun.dto.DtoCategorie;
 import contacts.commun.dto.DtoCompte;
@@ -9,6 +10,7 @@ import contacts.commun.dto.DtoRubrique;
 import contacts.commun.dto.DtoTarif;
 import contacts.commun.dto.DtoTelephone;
 import contacts.commun.dto.DtoZone;
+import contacts.emb.dom.Annonce;
 import contacts.emb.dom.Annonceur;
 import contacts.emb.dom.Categorie;
 import contacts.emb.dom.Compte;
@@ -24,7 +26,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-05-08T18:00:36+0200",
+    date = "2017-05-10T08:39:55+0200",
     comments = "version: 1.1.0.Final, compiler: Eclipse JDT (IDE) 1.2.100.v20160418-1457, environment: Java 1.8.0_131 (Oracle Corporation)"
 )
 public class IMapperDoDtoImpl implements IMapperDoDto {
@@ -37,17 +39,17 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Compte compte = new Compte();
 
-        compte.setId( source.getId() );
-        compte.setPseudo( source.getPseudo() );
-        compte.setMotDePasse( source.getMotDePasse() );
         compte.setEmail( source.getEmail() );
+        compte.setId( source.getId() );
+        compte.setMotDePasse( source.getMotDePasse() );
+        compte.setNom( source.getNom() );
+        compte.setPrenom( source.getPrenom() );
+        compte.setPseudo( source.getPseudo() );
         List<String> list = source.getRoles();
         if ( list != null ) {
             compte.setRoles(       new ArrayList<String>( list )
             );
         }
-        compte.setNom( source.getNom() );
-        compte.setPrenom( source.getPrenom() );
         compte.setTelephone( source.getTelephone() );
 
         return compte;
@@ -125,15 +127,15 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Annonceur annonceur = new Annonceur();
 
-        annonceur.setId( source.getId() );
-        annonceur.setNom( source.getNom() );
-        annonceur.setTelephone( source.getTelephone() );
         annonceur.setEmail( source.getEmail() );
-        annonceur.setLieuNom( source.getLieuNom() );
+        annonceur.setId( source.getId() );
         annonceur.setLieuAdresse( source.getLieuAdresse() );
         annonceur.setLieuCp( source.getLieuCp() );
+        annonceur.setLieuNom( source.getLieuNom() );
         annonceur.setLieuVille( source.getLieuVille() );
+        annonceur.setNom( source.getNom() );
         annonceur.setSiteWeb( source.getSiteWeb() );
+        annonceur.setTelephone( source.getTelephone() );
 
         return annonceur;
     }
@@ -165,15 +167,15 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
             return null;
         }
 
-        cible.setId( source.getId() );
-        cible.setNom( source.getNom() );
-        cible.setTelephone( source.getTelephone() );
         cible.setEmail( source.getEmail() );
-        cible.setLieuNom( source.getLieuNom() );
+        cible.setId( source.getId() );
         cible.setLieuAdresse( source.getLieuAdresse() );
         cible.setLieuCp( source.getLieuCp() );
+        cible.setLieuNom( source.getLieuNom() );
         cible.setLieuVille( source.getLieuVille() );
+        cible.setNom( source.getNom() );
         cible.setSiteWeb( source.getSiteWeb() );
+        cible.setTelephone( source.getTelephone() );
 
         return cible;
     }
@@ -214,14 +216,14 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Mouvement mouvement = new Mouvement();
 
+        mouvement.setAnnonceur( map( source.getAnnonceur() ) );
+        mouvement.setDate( source.getDate() );
+        mouvement.setDescription( source.getDescription() );
+        mouvement.setHeure( source.getHeure() );
         mouvement.setIdMouvement( source.getIdMouvement() );
+        mouvement.setLibelle( source.getLibelle() );
         mouvement.setMontant( source.getMontant() );
         mouvement.setSolde( source.getSolde() );
-        mouvement.setLibelle( source.getLibelle() );
-        mouvement.setDescription( source.getDescription() );
-        mouvement.setDate( source.getDate() );
-        mouvement.setHeure( source.getHeure() );
-        mouvement.setAnnonceur( map( source.getAnnonceur() ) );
 
         return mouvement;
     }
@@ -340,11 +342,11 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
 
         Tarif tarif = new Tarif();
 
-        tarif.setTarifConference( source.getTarifConference() );
-        tarif.setTarifStage( source.getTarifStage() );
-        tarif.setTarifRelief( source.getTarifRelief() );
         tarif.setDate( source.getDate() );
         tarif.setId( source.getId() );
+        tarif.setTarifConference( source.getTarifConference() );
+        tarif.setTarifRelief( source.getTarifRelief() );
+        tarif.setTarifStage( source.getTarifStage() );
 
         return tarif;
     }
@@ -364,6 +366,78 @@ public class IMapperDoDtoImpl implements IMapperDoDto {
         dtoTarif.setTarifStage( source.getTarifStage() );
 
         return dtoTarif;
+    }
+
+    @Override
+    public Annonce map(DtoAnnonce source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        Annonce annonce = new Annonce();
+
+        annonce.setAnimateurNom( source.getAnimateurNom() );
+        annonce.setAnimateurQualification( source.getAnimateurQualification() );
+        annonce.setAnnonceur( map( source.getAnnonceur() ) );
+        annonce.setCategorie( map( source.getCategorie() ) );
+        annonce.setDateDebut( source.getDateDebut() );
+        annonce.setDateFin( source.getDateFin() );
+        annonce.setDescription( source.getDescription() );
+        annonce.setHeureDebut( source.getHeureDebut() );
+        annonce.setHeureFin( source.getHeureFin() );
+        annonce.setIdAnnonce( source.getIdAnnonce() );
+        annonce.setLieuAdresse( source.getLieuAdresse() );
+        annonce.setLieuCp( source.getLieuCp() );
+        annonce.setLieuNom( source.getLieuNom() );
+        annonce.setLieuVille( source.getLieuVille() );
+        annonce.setOrganisateurEmail( source.getOrganisateurEmail() );
+        annonce.setOrganisateurNom( source.getOrganisateurNom() );
+        annonce.setOrganisateurSiteWeb( source.getOrganisateurSiteWeb() );
+        annonce.setOrganisateurTelephone( source.getOrganisateurTelephone() );
+        annonce.setRubrique( map( source.getRubrique() ) );
+        if ( source.getStatute() != null ) {
+            annonce.setStatute( source.getStatute().name() );
+        }
+        annonce.setTitre( source.getTitre() );
+        annonce.setZone( map( source.getZone() ) );
+
+        return annonce;
+    }
+
+    @Override
+    public DtoAnnonce map(Annonce source) {
+        if ( source == null ) {
+            return null;
+        }
+
+        DtoAnnonce dtoAnnonce = new DtoAnnonce();
+
+        dtoAnnonce.setAnimateurNom( source.getAnimateurNom() );
+        dtoAnnonce.setAnimateurQualification( source.getAnimateurQualification() );
+        dtoAnnonce.setAnnonceur( map( source.getAnnonceur() ) );
+        dtoAnnonce.setCategorie( map( source.getCategorie() ) );
+        dtoAnnonce.setDateDebut( source.getDateDebut() );
+        dtoAnnonce.setDateFin( source.getDateFin() );
+        dtoAnnonce.setDescription( source.getDescription() );
+        dtoAnnonce.setHeureDebut( source.getHeureDebut() );
+        dtoAnnonce.setHeureFin( source.getHeureFin() );
+        dtoAnnonce.setIdAnnonce( source.getIdAnnonce() );
+        dtoAnnonce.setLieuAdresse( source.getLieuAdresse() );
+        dtoAnnonce.setLieuCp( source.getLieuCp() );
+        dtoAnnonce.setLieuNom( source.getLieuNom() );
+        dtoAnnonce.setLieuVille( source.getLieuVille() );
+        dtoAnnonce.setOrganisateurEmail( source.getOrganisateurEmail() );
+        dtoAnnonce.setOrganisateurNom( source.getOrganisateurNom() );
+        dtoAnnonce.setOrganisateurSiteWeb( source.getOrganisateurSiteWeb() );
+        dtoAnnonce.setOrganisateurTelephone( source.getOrganisateurTelephone() );
+        dtoAnnonce.setRubrique( map( source.getRubrique() ) );
+        if ( source.getStatute() != null ) {
+            dtoAnnonce.setStatute( source.getStatute().name() );
+        }
+        dtoAnnonce.setTitre( source.getTitre() );
+        dtoAnnonce.setZone( map( source.getZone() ) );
+
+        return dtoAnnonce;
     }
 
     protected List<Telephone> dtoTelephoneListToTelephoneList(List<DtoTelephone> list) {

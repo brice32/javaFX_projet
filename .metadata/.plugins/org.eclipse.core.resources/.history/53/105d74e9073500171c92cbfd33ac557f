@@ -1,0 +1,14 @@
+package contacts.javafx.fxb;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
+
+public class FXAnnonce {
+
+	//Champs
+	private final IntegerProperty idAnnonce;
+	private final StringProperty  titre;
+	private final StringProperty  description;
+
+
+}

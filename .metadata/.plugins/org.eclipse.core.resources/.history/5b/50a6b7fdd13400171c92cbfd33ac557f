@@ -1,0 +1,78 @@
+package contacts.emb.dao.jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import contacts.emb.dao.IDaoAnnonce;
+import contacts.emb.dom.Annonce;
+import contacts.emb.dom.Annonceur;
+
+public class DaoAnnonce implements IDaoAnnonce{
+
+	// Champs
+
+	private DataSource dataSource;
+
+	// Injecteurs
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
+	// Action
+	@Override
+	public List<Annonce> listerTout() {
+		Connection cn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql;
+
+		try {
+			cn = dataSource.getConnection();
+
+			sql = "SELECT * FROM Annonce ORDER BY dateDebut";
+			stmt = cn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+
+			List<Annonce> annonce = new ArrayList<>();
+			while (rs.next()) {
+				annonce.add(construireAnnonce(rs));
+			}
+			return annonce;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+			} catch (SQLException e) {
+			}
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException e) {
+			}
+			try {
+				if (cn != null)
+					cn.close();
+			} catch (SQLException e) {
+			}
+		}
+	}
+
+	// Mé thodes auxiliaires
+
+	private Annonce construireAnnonce(ResultSet rs) throws SQLException {
+		Annonce annonce = new Annonce();
+		annonce.setIdAnnonce(rs.getInt("idAnnonce"));
+		annonce.setTitre(rs.getString("titre"));
+		annonce.setDescription(rs.getString("description"));
+		return annonce;
+	}
+}

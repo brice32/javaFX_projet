@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ViewMenuAnnonce.fxml&apos; to &apos;contacts-gui-javafx/src/contacts.javafx.view.systeme&apos;&#x0D;&#x0A;- Original project: &apos;contacts-gui-javafx&apos;&#x0D;&#x0A;- Destination element: &apos;contacts-gui-javafx/src/contacts.javafx.view.systeme&apos;&#x0D;&#x0A;- Original element: &apos;ViewMenuAnnonce.fxml&apos;" description="Copy file" destination="/src&lt;contacts.javafx.view.systeme" element1="src/contacts/javafx/view/systeme/ViewMenuAnnonce.fxml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1491052619729" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,23 @@
+package contacts.javafx.fxb;
+
+import java.time.chrono.ChronoLocalDate;
+
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTimePicker;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class FXAnnonce {
+
+	//Champs
+	private final IntegerProperty idAnnonce				= new SimpleIntegerProperty();
+	private final StringProperty  titre				   	= new SimpleStringProperty();
+	private final StringProperty  description			= new SimpleStringProperty();
+	private final StringProperty  statute				= new SimpleStringProperty();
+	private final JFXDatePicker dateDebut          = new JFXDatePicker();
+	private final JFXDatePicker dateFin			= new JFXDatePicker();
+	private final JFXTimePicker heureDebut			= new JFXTimePicker();
+}

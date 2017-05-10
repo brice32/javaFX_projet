@@ -1,0 +1,5 @@
+package contacts.emb.dao.jdbc;
+
+public class DaoAnnonce {
+
+}

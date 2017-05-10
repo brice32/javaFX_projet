@@ -6,6 +6,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
+import contacts.commun.dto.DtoAnnonce;
 import contacts.commun.dto.DtoAnnonceur;
 import contacts.commun.dto.DtoCategorie;
 import contacts.commun.dto.DtoCompte;
@@ -15,6 +16,7 @@ import contacts.commun.dto.DtoRubrique;
 import contacts.commun.dto.DtoTarif;
 import contacts.commun.dto.DtoTelephone;
 import contacts.commun.dto.DtoZone;
+import contacts.emb.dom.Annonce;
 import contacts.emb.dom.Annonceur;
 import contacts.emb.dom.Categorie;
 import contacts.emb.dom.Compte;
@@ -73,6 +75,10 @@ public interface IMapperDoDto {
 	Tarif map( DtoTarif source );
 
 	DtoTarif map( Tarif source );
+
+	Annonce map( DtoAnnonce source );
+
+	DtoAnnonce map( Annonce source );
 
 	@AfterMapping
 	default void ajouterRefPersonne( @MappingTarget Personne personne ) {

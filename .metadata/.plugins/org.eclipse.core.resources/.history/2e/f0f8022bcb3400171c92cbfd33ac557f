@@ -1,0 +1,5 @@
+package contacts.emb.dao;
+
+public interface IDaoAnnonce {
+
+}

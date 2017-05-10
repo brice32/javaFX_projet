@@ -1,0 +1,9 @@
+package contacts.javafx.model;
+
+import contacts.commun.util.ExceptionAppli;
+
+public interface IModelAnnonce {
+
+	void actualiserListe() throws ExceptionAppli;
+
+}

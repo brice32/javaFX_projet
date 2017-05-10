@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;IModelTarif.java&apos; to &apos;contacts-gui-javafx/src/contacts.javafx.model&apos;&#x0D;&#x0A;- Original project: &apos;contacts-gui-javafx&apos;&#x0D;&#x0A;- Destination element: &apos;contacts-gui-javafx/src/contacts.javafx.model&apos;&#x0D;&#x0A;- Original element: &apos;contacts.javafx.model.standard.IModelTarif.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;contacts.javafx.model" element1="/src&lt;contacts.javafx.model.standard{IModelTarif.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1493369875772" units="1" version="1.0"/>
+</session>

@@ -22,12 +22,14 @@ public enum EnumView {
 	CategorieListe   ( "configuration/ViewCategorieListe.fxml" ),
 	CategorieForm    ( "configuration/ViewCategorieForm.fxml" ),
 	Mouvement        ( "mouvement/ViewMouvement.fxml"),
-	ZoneListe 		("zone/ViewZoneListe.fxml"),
-	ZoneForm		 ("zone/ViewZoneForm.fxml"),
-	RubriqueListe	 ("rubrique/ViewRubriqueListe.fxml"),
-	RubriqueForm 	("rubrique/ViewRubriqueForm.fxml"),
-	TarifListe     ("tarif/ViewTarifListe.fxml"),
-	TarifForm      ("tarif/ViewTarifForm.fxml"),
+	ZoneListe 		 ( "zone/ViewZoneListe.fxml"),
+	ZoneForm		 ( "zone/ViewZoneForm.fxml"),
+	RubriqueListe	 ( "rubrique/ViewRubriqueListe.fxml"),
+	RubriqueForm 	 ( "rubrique/ViewRubriqueForm.fxml"),
+	TarifListe       ( "tarif/ViewTarifListe.fxml"),
+	TarifForm        ( "tarif/ViewTarifForm.fxml"),
+	AnnonceListe     ( "annonce/ViewAnnonceListe.fxml"),
+	AnnonceForm      ( "annonce/ViewAnnonceForm.fxml"),
 	;
 
 

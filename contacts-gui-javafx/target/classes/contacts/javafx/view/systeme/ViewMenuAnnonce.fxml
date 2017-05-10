@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contacts.javafx.view.systeme.ControllerMenuAnnonce">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="contacts.javafx.view.systeme.ControllerMenuAnnonce">
    <children>
       <SplitPane dividerPositions="0.2982456140350877" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -54,7 +57,7 @@
                   </HBox>
                   <GridPane alignment="CENTER" layoutX="42.0" layoutY="65.0" maxHeight="491.0" maxWidth="502.0" prefHeight="491.0" prefWidth="502.0">
                      <children>
-                        <Button fx:id="buttonListeAnnonce" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Liste Annonce" />
+                        <Button fx:id="buttonListeAnnonce" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="32.0" layoutY="55.0" mnemonicParsing="false" onAction="#doAnnonceListe" prefHeight="100.0" prefWidth="200.0" text="Liste Annonce" />
                         <Button fx:id="buttonListeAnnonceur" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="291.0" layoutY="55.0" mnemonicParsing="false" onAction="#doListAnnonceur" prefHeight="100.0" prefWidth="200.0" text="Liste Annonceur" GridPane.columnIndex="1" />
                      </children>
                      <columnConstraints>

@@ -1,0 +1,7 @@
+package contacts.javafx.model.standard;
+
+import contacts.javafx.model.IModelAnnonce;
+
+public class ModelAnnonce implements IModelAnnonce {
+
+}

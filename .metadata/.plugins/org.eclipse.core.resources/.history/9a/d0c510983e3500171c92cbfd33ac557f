@@ -1,0 +1,31 @@
+package contacts.javafx.view.annonce;
+
+import contacts.commun.util.ExceptionAppli;
+import contacts.javafx.view.EnumView;
+import contacts.javafx.view.IController;
+import contacts.javafx.view.IManagerGui;
+import javafx.fxml.FXML;
+
+public class ControllerAnnonceListe implements IController {
+
+	private IManagerGui managerGui;
+
+	@Override
+	public void setManagerGui(IManagerGui managerGui) throws ExceptionAppli {
+		// TODO Auto-generated method stub
+		this.managerGui=managerGui;
+
+	}
+
+	@FXML
+	private void doRetour(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.Info);
+	}
+
+	@FXML
+	private void doRetourMenuAnnonce(){
+		managerGui.reinit();
+		managerGui.showView(EnumView.MenuAnnonce);
+	}
+}

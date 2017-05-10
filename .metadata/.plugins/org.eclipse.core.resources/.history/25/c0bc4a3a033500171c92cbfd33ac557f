@@ -1,0 +1,38 @@
+package contacts.commun.dto;
+
+import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Time;
+
+import contacts.commun.util.Statute;
+import contacts.emb.dom.Annonceur;
+import contacts.emb.dom.Rubrique;
+import contacts.emb.dom.Zone;
+
+public class DtoAnnonce implements Serializable {
+
+	private int          	idAnnonce;
+	private String 			titre;
+	private String 			description;
+	private Statute         statute;
+	private Date       dateDebut;
+	private Date       dateFin;
+	private Time       heureDebut;
+	private Time       heureFin;
+	private String 			lieuNom;
+	private String  		lieuAdresse;
+	private String 			lieuCp;
+	private String 			lieuVille;
+	private String 			animateurNom;
+	private String 			animateurQualification;
+	private String 			organisateurNom;
+	private String 			organisateurSiteWeb;
+	private String 			organisateurEmail;
+	private String			organisateurTelephone;
+
+	private DtoAnnonceur	annonceur = new DtoAnnonceur();
+	private DtoRubrique    rubrique  = new DtoRubrique();
+	private DtoZone		zone      = new DtoZone();
+
+
+}
